@@ -5,6 +5,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { reset, global } from './styles/global';
+import Header from './components/header/header';
+import Footer from './components/footer/footer';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,7 +14,9 @@ root.render(
   <React.StrictMode>
     <Global styles={reset}/>
     <Global styles={global}/>
-    <App />
+    <Header />
+      <App />
+    <Footer />
   </React.StrictMode>
 );
 
