@@ -70,13 +70,13 @@ const StyledButton = styled.button`
   font-family: ${fonts.primary};
   font-weight: 500;
   &:active {
-    margin-top: 2px;
+    transform: scale(0.98);
   }
   ${(props) => buttonType(props.type)}
   ${(props) => buttonSize(props.size)}
 `
 
-function Button({children, ...props}) {
+export function Button({children, ...props}) {
 
 return(
     <StyledButton {...props} >
@@ -84,5 +84,3 @@ return(
     </StyledButton>
   )
 }
-
-export default Button;
