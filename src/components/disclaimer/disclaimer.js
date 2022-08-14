@@ -17,7 +17,7 @@ export function Disclaimer() {
         <p style={{textAlign: "center", fontWeight: "500"}}>
           Terms of Use Privacy Policy Cookie Policy Do Not Sell My Personal Information
         </p>
-        <p>
+        <p style={{textAlign: "center", fontWeight: "400"}}>
           Copyright © 2022 MH Sub I, LLC dba Internet Brands. The information provided 
           on this site is not legal advice, does not constitute a lawyer referral service, 
           and no attorney-client or confidential relationship is or should be formed by use 
