@@ -9,13 +9,18 @@ import { BsBriefcaseFill } from 'react-icons/bs';
 import { Disclaimer } from "../components/disclaimer/disclaimer";
 import { AskALawyer } from "../components/ask-lawyer/ask-a-lawyer";
 
+const H3 = styled.h3`
+  color: ${colors.blue.regular};
+  margin-top: 35px;
+  margin-bottom: 30px;
+`
 
 function MainPage() {
 
 
   return(
     <FlexColumn style={{alignItems: "center"}}>
-      <h3 style={{color: `${colors.blue.regular}`, marginTop: "30px", marginBottom: "30px"}}>Encuentra a tu representante</h3>
+      <H3>Encuentra a tu representante</H3>
       <form>
         <FlexColumn style={{gap: "20px"}}>
           <Input 
@@ -29,26 +34,41 @@ function MainPage() {
           <Button size="tall" type="primary">get started</Button>
         </FlexColumn>
       </form>
-      <h3 style={{ margin: "50px", color: `${colors.blue.regular}`, marginTop: "40px", marginBottom: "30px"}}>Busca por práctica</h3>
+      <H3>Busca por práctica</H3>
       <FlexColumn style={{gap: "3.5rem"}}>
         <PracticeCard 
           lawType="Family"
           practices={["Divorce", "Child Custody", "Child Support"]}
-          icon={<MdFamilyRestroom style={{position: "absolute", top: "-20px"}} size="40px" color={`${colors.blue.regular}`}/>}
+          icon={<MdFamilyRestroom 
+            style={{position: "absolute", top: "-20px"}} 
+            size="40px" color={`${colors.blue.regular}`}
+          />}
         />
         <PracticeCard 
           lawType="Employment"
           practices={["Discrimination", "Compensation", "Termination"]}
-          icon={<BsBriefcaseFill style={{position: "absolute", top: "-20px"}} size="40px" color={`${colors.blue.regular}`}/>}
+          icon={<BsBriefcaseFill 
+            style={{position: "absolute", top: "-20px"}} 
+            size="40px" color={`${colors.blue.regular}`}
+          />}
         />
         <PracticeCard 
           lawType="Real estate"
           practices={["Landlord", "Tenant", "Eviction"]}
-          icon={<MdHouse style={{position: "absolute", top: "-20px"}} size="40px" color={`${colors.blue.regular}`}/>}
+          icon={<MdHouse 
+            style={{position: "absolute", top: "-20px"}} 
+            size="40px" color={`${colors.blue.regular}`}
+          />}
         />
       </FlexColumn>
-      <Button style={{marginTop: "30px", marginBottom: "30px"}}type="secondary" size="wide">view all Legal Fields</Button>
-      <h3 style={{ margin: "50px", color: `${colors.blue.regular}`, marginTop: "40px", marginBottom: "30px"}}>Ask a Lawyer</h3>
+      <Button 
+        style={{marginTop: "30px", marginBottom: "30px"}}
+        type="secondary" 
+        size="wide"
+      >
+        view all Legal Fields
+      </Button>
+      <H3>Ask a Lawyer</H3>
       <AskALawyer style={{marginBottom: "1rem"}}/>
       <Disclaimer />
     </FlexColumn>

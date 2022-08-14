@@ -23,14 +23,18 @@ function inputType(type) {
 const SingleInput = styled.input`
   border-radius: 6px;
   padding: 4px;
-  border: 2px solid ${colors.blue.regular};
+  border: 3px solid ${colors.blue.regular};
   background-color: ${colors.white};
   font-family: ${fonts.primary};
   &:focus {
     outline: none;
     border: 2px solid ${colors.orange.regular};
   }
-  ${(props) => inputType(props.type)}
+  ${(props) => inputType(props.type)};
+
+  ::placeholder {
+    color: ${colors.blue.regular};
+  }
 `
 
 export function Input({id, name, value, placeholder, ...props}) {
