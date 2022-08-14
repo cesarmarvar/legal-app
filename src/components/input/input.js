@@ -33,7 +33,7 @@ const SingleInput = styled.input`
   ${(props) => inputType(props.type)}
 `
 
-function Input({id, name, value, placeholder, ...props}) {
+export function Input({id, name, value, placeholder, ...props}) {
 
   return(
     <SingleInput {...props}
@@ -44,5 +44,3 @@ function Input({id, name, value, placeholder, ...props}) {
     />
   )
 }
-
-export default Input;
