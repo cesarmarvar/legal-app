@@ -16,7 +16,7 @@ function buttonType(type) {
     case "secondary":
       return`
         color: white;
-        background-color: ${colors.blue.regular};
+        background-color: ${colors.blue.opaque_1};
         border: none;
         &: hover {
           background-color: #2e3e75
