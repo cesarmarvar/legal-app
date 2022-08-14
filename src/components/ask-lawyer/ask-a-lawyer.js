@@ -37,7 +37,7 @@ border-radius: 6px;
 border: none;
 `
 
-export function AskForm() {
+export function AskALawyer() {
   const [ showInstructions, setShowInstructions ] = useState(false);
 
   function handleSetShowClick(e) {
@@ -59,15 +59,17 @@ export function AskForm() {
             <p>How it works</p>
             <IoIosArrowUp size="20px"/>
           </FlexRow>
-          <div>
-            <p>Ask your question-it's free and anonymous.</p>
-            <p>Get notified when a lawyer responds-usually within 12 hours.</p>
-            <p>Ask follow-up questions-make sure you understand your options.</p>
-          </div><br />
-          <p><strong>Tips for asking questions:</strong></p><br />
-          <div>
-            <p>Provide key details, but don't feel like you have to thell the whole story.</p>
-            <p>Ask a concise question-be brief and to the point.</p>
+          <div style={{fontWeight: "500"}}>
+            <div>
+              <p>Ask your question-it's free and anonymous.</p>
+              <p>Get notified when a lawyer responds-usually within 12 hours.</p>
+              <p>Ask follow-up questions-make sure you understand your options.</p>
+            </div><br />
+            <p><strong>Tips for asking questions:</strong></p><br />
+            <div>
+              <p>Provide key details, but don't feel like you have to thell the whole story.</p>
+              <p>Ask a concise question-be brief and to the point.</p>
+            </div>
           </div>
         </BigBox>
         }
@@ -79,11 +81,3 @@ export function AskForm() {
     </Container>
   )
 }
-
-{/* <p>How it works</p>
-<p>Ask your question-it's free and anonymous.</p>
-<p>Get notified when a lawyer responds-usually within 12 hours.</p>
-<p>Ask follow-up questions-make sure you understand your options.</p>
-<strong>Tips for asking questions:</strong>
-<p>Provide key details, but don't feel like you have to thell the whole story.</p>
-<p>Ask a concise question-be brief and to the point.</p> */}
