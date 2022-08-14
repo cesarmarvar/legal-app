@@ -4,7 +4,7 @@ import { FlexColumn, FlexRow } from '../../utils';
 function Footer() {
 
   return(
-    <FlexColumn style={{justifyContent: "center", alignItems: 'center', gap: "0.5rem", position: "fixed", bottom: '0', width: "100%", padding: "0.5rem"}}>
+    <FlexColumn style={{justifyContent: "center", alignItems: 'center', gap: "0.5rem", width: "100%", padding: "0.5rem"}}>
       <FlexRow style={{gap: "1rem"}}>
         <a href="#">
           <BsFacebook size="25px" color="#5590B0"/>
