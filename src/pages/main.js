@@ -17,6 +17,10 @@ const H3 = styled.h3`
 
 function MainPage() {
 
+  function handleQueryClick(e) {
+    e.preventDefault();
+    console.log("QueryClick");
+  }
 
   return(
     <FlexColumn style={{alignItems: "center"}}>
@@ -31,7 +35,7 @@ function MainPage() {
             placeholder="Location" 
             type="query"
           />
-          <Button size="tall" type="primary">get started</Button>
+          <Button onClick={handleQueryClick} size="tall" type="primary">get started</Button>
         </FlexColumn>
       </form>
       <H3>Busca por práctica</H3>
@@ -61,7 +65,7 @@ function MainPage() {
           />}
         />
       </FlexColumn>
-      <Button 
+      <Button
         style={{marginTop: "30px", marginBottom: "30px"}}
         type="secondary" 
         size="wide"

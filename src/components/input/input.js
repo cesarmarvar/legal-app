@@ -28,7 +28,7 @@ const SingleInput = styled.input`
   font-family: ${fonts.primary};
   &:focus {
     outline: none;
-    border: 2px solid ${colors.orange.regular};
+    border: 3px solid ${colors.orange.regular};
   }
   ${(props) => inputType(props.type)};
 

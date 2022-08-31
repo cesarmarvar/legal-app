@@ -4,7 +4,8 @@ import { colors } from "../../styles/colors";
 import { fonts } from "../../styles/fonts";
 import { Button } from "../button/button";
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { FlexColumn, FlexRow } from "../../utils";
+import { FlexRow } from "../../utils";
+import { animate, motion } from "framer-motion";
 
 const Container = styled.div`
   border: 3px solid ${colors.blue.regular};
@@ -29,12 +30,12 @@ const MiniBox = styled.div`
   border: none;
 `
 
-const BigBox = styled.div`
-padding: 0.8rem;
-color: ${colors.black};
-background-color: ${colors.gray.regular};
-border-radius: 6px;
-border: none;
+const BigBox = styled(motion.div)`
+  padding: 0.8rem;
+  color: ${colors.black};
+  background-color: ${colors.gray.regular};
+  border-radius: 6px;
+  border: none;
 `
 
 export function AskALawyer() {
@@ -48,14 +49,14 @@ export function AskALawyer() {
   return(
     <Container>
       <h4 style={{marginBottom: "1rem"}}>Free, personalized answers from Expert Lawyers</h4>
-      {showInstructions ? 
+      {!showInstructions ? 
         <MiniBox onClick={handleSetShowClick}>
           <p>How it works</p>
           <IoIosArrowDown size="20px"/>
         </MiniBox>
         :
-        <BigBox>
-           <FlexRow style={{justifyContent: "space-between", color: "#000000B5", marginBottom: "1rem", fontWeight: "600"}} onClick={handleSetShowClick}>
+        <BigBox as={motion.div} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}> 
+           <FlexRow style={{cursor: "pointer", justifyContent: "space-between", color: "#000000B5", marginBottom: "1rem", fontWeight: "600"}} onClick={handleSetShowClick}>
             <p>How it works</p>
             <IoIosArrowUp size="20px"/>
           </FlexRow>
