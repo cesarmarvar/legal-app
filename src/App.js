@@ -1,9 +1,11 @@
-import MainPage from "./pages/main";
+import { LawyersPage } from "./pages/lawyers";
+// import MainPage from "./pages/main";
 
 function App() {
   return (
     <>
-      <MainPage />
+      {/* <MainPage /> */}
+      <LawyersPage />
     </>
   );
 }
