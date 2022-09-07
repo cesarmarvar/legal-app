@@ -31,6 +31,8 @@ function buttonType(type) {
           background-color: #e6e6e6
         }
       `
+    default:
+      return;
   }
 }
 
@@ -61,6 +63,8 @@ function buttonSize(size) {
         width: 28.23px;
         height: 27px
       `
+    default:
+      return;
   }
 }
 
