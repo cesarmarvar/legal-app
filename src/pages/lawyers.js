@@ -6,7 +6,7 @@ import { colors } from "../styles/colors";
 import { DivisionLine, FlexColumn, FlexRow } from "../utils";
 import { MdStars } from "react-icons/md";
 
-function printRatingStars(rating) {
+export function printRatingStars(rating) {
   const x = rating
   switch (true){
     case (x === 0):

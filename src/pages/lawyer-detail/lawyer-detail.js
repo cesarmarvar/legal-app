@@ -1,0 +1,88 @@
+import { useEffect } from "react";
+import { useState } from "react"
+import { showLawyer } from "../../services/lawyers-services";
+import { DivisionLine, FlexColumn, FlexRow } from "../../utils";
+import { Button } from "../../components/button/button";
+import { printRatingStars } from "../lawyers";
+import { getLawyerReviews } from "../../services/reviews-services";
+import { Content, SectionContainer, Subtitle } from "./styles";
+
+
+function formatReviewerName(name) {
+  return name === null ? "Anonymous" : name
+}
+
+export function LawyerDetailPage() {
+ 
+  const [ lawyer, setLawyer ] = useState("");
+  const [ reviews, setReviews ] = useState([]);
+
+  useEffect(() => {
+    showLawyer(1)
+    .then(setLawyer)
+    .catch(console.log)
+    getLawyerReviews(1)
+    .then(setReviews)
+    .catch(console.log)
+  }, [])
+
+
+  return(
+    <>
+      <FlexColumn style={{gap: "1rem", margin: "2rem", alignItems: "center"}}>
+        <h3 style={{textAlign: "center"}}>{lawyer.name}</h3>
+        <DivisionLine />
+        <div style={{height: "87px", width: "103px", border: "1px solid black", marginTop: "2rem", marginBottom: "2rem"}}>image</div>
+        <Button size="widest" type="primary">Website</Button>
+      </FlexColumn>
+      <SectionContainer>
+        <Subtitle>About {lawyer.name}</Subtitle>
+        <Content >{lawyer.bio}</Content>
+        <DivisionLine />
+      </SectionContainer>
+      <SectionContainer>
+        <Subtitle>Areas of Law</Subtitle>
+        <Content>Civil, Penal, Criminal, Judicial</Content>
+        <DivisionLine />
+      </SectionContainer>
+      <SectionContainer>
+        <Subtitle>Credentials</Subtitle>
+        <Content >{lawyer.credentials}</Content>
+        <DivisionLine />
+      </SectionContainer>
+      <SectionContainer>
+        <Subtitle>Payement information</Subtitle>
+        <Content >{lawyer.payment_method}.</Content>
+        <DivisionLine />
+      </SectionContainer>
+      <SectionContainer>
+        <Subtitle>Social Media</Subtitle>
+        <Content >{lawyer.social_media}.</Content>
+        <DivisionLine />
+      </SectionContainer>
+      <FlexRow style={{gap: "1rem", margin: "2rem", justifyContent: "space-between"}}>
+        <Subtitle style={{fontSize: "22px"}}>Reviews</Subtitle>
+        <FlexRow style={{alignItems: "center"}}>
+          {printRatingStars(lawyer.score?.average_rating)}
+          <Content>({lawyer.score?.reviews_count})</Content>
+        </FlexRow>
+      </FlexRow>
+      <SectionContainer>
+        {reviews.map((review, index) => {
+          return(
+                <FlexColumn key={index} style={{gap: "6px", marginBottom: "1rem"}}>
+                  <Subtitle>{review.title}</Subtitle>
+                  <FlexRow style={{marginTop: "4px", marginBottom: "4px"}}>
+                    {printRatingStars(review.rating)}
+                  </FlexRow>
+                  <p style={{color: "gray", fontSize: "12px"}}>Posted by {formatReviewerName(review.name)} on {review.created_at}</p>
+                  <p>{review.content}</p>
+                </FlexColumn>
+                )
+        })}
+        <Button type="ghost" size="wide" style={{margin: "0 auto"}}>Review {lawyer.name}</Button>
+      </SectionContainer>
+    </>
+
+  )
+}
