@@ -12,10 +12,10 @@ function inputType(type) {
         color: ${colors.blue.regular};
         font-weight: 500;
       `
-    case "text":
+    default:
       return`
         height: 36px;
-        width: 325px;
+        width: 100%;
       `
   }
 }
