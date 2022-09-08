@@ -43,6 +43,11 @@ function buttonSize(size) {
         width: 260px;
         height: 56px;
       `
+    case "widest":
+      return`
+        width: 100%;
+        height: 42px;
+      `
     case "wide":
       return`
         width: 327px;
