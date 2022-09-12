@@ -20,15 +20,23 @@ const SingleTextarea = styled.textarea`
     color: ${colors.blue.regular};
   }
 `
+const Label = styled.label`
+font-weight: 500;
+font-size: 18px;
+`
 
-export function Textarea({id, name, value, placeholder, ...props}) {
+export function Textarea({id, name, value, placeholder, label, ...props}) {
 
   return(
-    <SingleTextarea {...props}
-    id={id}
-    name={name}
-    value={value}
-    placeholder={placeholder}
-    />
+    <>
+      <Label htmlFor={id || name}>{label}</Label>
+      <SingleTextarea {...props}
+      id={id}
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      label={label}
+      />
+    </>
   )
 }

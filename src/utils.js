@@ -15,3 +15,7 @@ export const DivisionLine = styled.div`
   width: 100%;
   height: 0px;
 `
+
+export const MainContainer = styled.div`
+  margin: 2rem;
+`
