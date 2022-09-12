@@ -7,3 +7,15 @@ export async function getLawyerReviews(id) {
   const data = response.json();
   return data;
 }
+
+export async function createReview(formData) {
+  const response = await fetch(`${BASE_URL}reviews/new`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData)
+  });
+  const data = response.json();
+  return data
+}

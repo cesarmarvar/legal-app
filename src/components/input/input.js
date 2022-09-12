@@ -12,10 +12,10 @@ function inputType(type) {
         color: ${colors.blue.regular};
         font-weight: 500;
       `
-    case "text":
+    default:
       return`
-        height: 36px;
-        width: 325px;
+        height: 45px;
+        width: 100%;
       `
   }
 }
@@ -37,14 +37,23 @@ const SingleInput = styled.input`
   }
 `
 
-export function Input({id, name, value, placeholder, ...props}) {
+const Label = styled.label`
+font-weight: 500;
+font-size: 18px;
+`
+
+export function Input({id, name, value, placeholder, onChange, label, ...props}) {
 
   return(
-    <SingleInput {...props}
-    id={id}
-    name={name}
-    value={value}
-    placeholder={placeholder}
-    />
+    <>
+        <Label htmlFor={id || name}>{label}</Label>
+        <SingleInput {...props}
+          id={id}
+          name={name}
+          value={value}
+          placeholder={placeholder}
+          onChange={onChange}
+        />
+    </>
   )
 }

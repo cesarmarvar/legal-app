@@ -83,6 +83,7 @@ const StyledButton = styled.button`
   text-transform: capitalize;
   font-family: ${fonts.primary};
   font-weight: 500;
+  font-size: 16px;
   &:active {
     transform: scale(0.98);
   }
