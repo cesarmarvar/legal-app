@@ -1,0 +1,23 @@
+#starButton {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.on {
+  color: #DB821AD6;
+}
+.off {
+  color: #ccc;
+}
+
+/* ========================*/
+
+.radioInput {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
