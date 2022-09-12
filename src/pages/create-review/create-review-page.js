@@ -24,6 +24,7 @@ export function CreateReview() {
     lawyer_id: 1
   });
   
+  // eslint-disable-next-line
   const { rating, title, content, context, name, email } = formData;
 
   function handleChange(e){
@@ -143,11 +144,20 @@ export function CreateReview() {
                 onChange={handleChange}
               />
             </InputContainer>
-            <Button type="secondary" size="wide" style={{margin: "0 auto"}}>Submit</Button>
+            <Button 
+              type="secondary" 
+              size="wide" 
+              style={{margin: "0 auto"}}
+            >Submit</Button>
           </FlexColumn>
         </form>
       </main>
-      <p style={{textAlign: "justify", marginTop: "1.5rem"}}>By clicking the “Submit” button, you agree to Legal’s terms of use. Please see our community guidelines and privacy policy for information on posting to Legal and how we collect, use, and share information you provide to us.</p>
+      <p 
+      style={{
+        textAlign: "justify", 
+        marginTop: "1.5rem"
+      }}
+      >By clicking the “Submit” button, you agree to Legal’s terms of use. Please see our community guidelines and privacy policy for information on posting to Legal and how we collect, use, and share information you provide to us.</p>
     </MainContainer>
   )
 }
