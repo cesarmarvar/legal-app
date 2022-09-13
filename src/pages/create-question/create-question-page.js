@@ -57,8 +57,8 @@ function CreateQuestionPage() {
             value={explanation}
             onChange={handleChange}
           />
-          <InputContainer>
-            <Label htmlFor="context">Was this a consultation or did you hire this attorney?</Label>
+          <InputContainer style={{marginTop: "0.5rem", marginBottom: "0.5rem"}}>
+            <Label htmlFor="context">Do you plan to hire an attorney?</Label>
             <FlexRow style={{gap: "2rem"}}>
               <FlexRow style={{gap: "0.5rem"}}>
                 <input 
@@ -68,7 +68,7 @@ function CreateQuestionPage() {
                   value="Yes"
                   onClick={() => handleConfirmationClick("yes")}
                 />
-                <label htmlFor="Consulted">Yes</label>
+                <label htmlFor="Yes">Yes</label>
               </FlexRow>
               <FlexRow style={{gap: "0.5rem"}}>
                 <input 
