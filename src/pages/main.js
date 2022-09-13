@@ -8,6 +8,7 @@ import { MdFamilyRestroom, MdHouse } from 'react-icons/md';
 import { BsBriefcaseFill } from 'react-icons/bs';
 import { Disclaimer } from "../components/disclaimer/disclaimer";
 import { AskALawyer } from "../components/ask-lawyer/ask-a-lawyer";
+import { useNavigate } from "react-router-dom"
 
 const H3 = styled.h3`
   color: ${colors.blue.regular};
@@ -17,9 +18,11 @@ const H3 = styled.h3`
 
 function MainPage() {
 
+  const navigate = useNavigate();
+
   function handleQueryClick(e) {
     e.preventDefault();
-    console.log("QueryClick");
+    navigate('/lawyers')
   }
 
   return(

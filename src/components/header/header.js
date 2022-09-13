@@ -1,5 +1,7 @@
 import { BiMenu } from "react-icons/bi";
 import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
+import { FlexRow } from "../../utils";
 
 
 const Title = styled.h1`
@@ -22,12 +24,18 @@ function Header() {
     console.log("Click!")
   }
 
+  const navigate = useNavigate();
+
   return(
     <header style={{padding: "1rem"}}>
       <Menu >
         <BiMenu onClick={handleMenuClick} style={{marginTop: "6px"}} size="35px"/>
       </Menu>
-      <Title>Legal</Title>
+      <FlexRow style={{justifyContent: "center"}}>
+        <Title
+        onClick={() => navigate(`/`)}
+        style={{cursor: "pointer"}}>Legal</Title>
+      </FlexRow>
     </header>
   )
 }

@@ -6,7 +6,7 @@ import { Button } from "../../components/button/button";
 import { printRatingStars } from "../lawyers";
 import { getLawyerReviews } from "../../services/reviews-services";
 import { Content, SectionContainer, Subtitle } from "./styles";
-
+import { useParams, useNavigate } from "react-router-dom";
 
 function formatReviewerName(name) {
   return name === null ? "Anonymous" : name
@@ -17,14 +17,17 @@ export function LawyerDetailPage() {
   const [ lawyer, setLawyer ] = useState("");
   const [ reviews, setReviews ] = useState([]);
 
+  const navigate = useNavigate();
+  const params = useParams();
+
   useEffect(() => {
-    showLawyer(1)
+    showLawyer(params.id)
     .then(setLawyer)
     .catch(console.log)
-    getLawyerReviews(1)
+    getLawyerReviews(params.id)
     .then(setReviews)
     .catch(console.log)
-  }, [])
+  }, [params])
 
 
   return(
@@ -80,7 +83,12 @@ export function LawyerDetailPage() {
                 </FlexColumn>
                 )
         })}
-        <Button type="ghost" size="wide" style={{margin: "0 auto"}}>Review {lawyer.name}</Button>
+        <Button 
+          type="ghost" 
+          size="wide" 
+          style={{margin: "0 auto"}}
+          onClick={() => navigate(`/reviews/new/${lawyer.id}`)}
+        >Review {lawyer.name}</Button>
       </SectionContainer>
     </>
 

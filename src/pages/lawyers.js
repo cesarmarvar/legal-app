@@ -5,6 +5,8 @@ import { getLawyers } from "../services/lawyers-services";
 import { colors } from "../styles/colors";
 import { DivisionLine, FlexColumn, FlexRow } from "../utils";
 import { MdStars } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 
 export function printRatingStars(rating) {
   const x = rating
@@ -55,6 +57,8 @@ export function LawyersPage() {
 
   const [lawyers, setLawyers] = useState([]);
   
+  const navigate = useNavigate();
+
   useEffect(() => {
     getLawyers()
     .then(setLawyers)
@@ -78,12 +82,13 @@ export function LawyersPage() {
     </FlexRow>
     {lawyers.map((lawyer, index) => {
       return(
-        <FlexColumn key={index} style={{
-          maxHeight: "310px",
-          gap: "1rem",
-          marginBottom: "1rem"
-
-        }}>
+        <FlexColumn 
+          key={index} 
+          style={{
+            maxHeight: "310px",
+            gap: "1rem",
+            marginBottom: "1rem"
+            }}> 
           <DivisionLine />
           <FlexRow style={{
             gap: "2rem"
@@ -93,7 +98,10 @@ export function LawyersPage() {
               gap: "8px",
               width: "100%"
             }}>
-              <h3>{lawyer.name}</h3>
+              <h3
+              style={{cursor: "pointer"}}
+                onClick={() => navigate(`/lawyers/${lawyer.id}`)}
+              >{lawyer.name}</h3>
               <p>{lawyer.credentials}</p>
               <FlexRow style={{justifyContent: "space-between"}}>
                 <p>licensed for {lawyer.years_licensed} years</p>

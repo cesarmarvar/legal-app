@@ -7,6 +7,7 @@ import reportWebVitals from './reportWebVitals';
 import { reset, global } from './styles/global';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
+import { BrowserRouter } from "react-router-dom";
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,9 +15,11 @@ root.render(
   <React.StrictMode>
     <Global styles={reset}/>
     <Global styles={global}/>
-    <Header />
-      <App />
-    <Footer />
+      <BrowserRouter>
+        <Header />
+          <App />
+        <Footer />
+      </BrowserRouter>
   </React.StrictMode>
 );
 
