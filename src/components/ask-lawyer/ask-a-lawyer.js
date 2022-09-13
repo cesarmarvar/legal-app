@@ -5,7 +5,8 @@ import { fonts } from "../../styles/fonts";
 import { Button } from "../button/button";
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { FlexRow } from "../../utils";
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   border: 3px solid ${colors.blue.regular};
@@ -40,11 +41,12 @@ const BigBox = styled(motion.div)`
 
 export function AskALawyer() {
   const [ showInstructions, setShowInstructions ] = useState(false);
+  const navigate = useNavigate();
 
   function handleSetShowClick(e) {
     e.preventDefault();
     setShowInstructions(!showInstructions)
-  }
+  };
 
   return(
     <Container>
@@ -77,6 +79,7 @@ export function AskALawyer() {
       <Button style={{marginTop: "1rem", marginBottom: "1rem", float: "right"}}
         type="secondary" 
         size="medium"
+        onClick={() => navigate('/questions/new')}
         >get started
       </Button>
     </Container>

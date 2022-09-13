@@ -4,15 +4,28 @@ import { Input } from "../../components/input/input";
 import { Button } from "../../components/button/button"
 import { Textarea } from "../../components/textarea/textarea";
 import { InputContainer, Label } from "./styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { colors } from "../../styles/colors";
 import "../../components/star-rating/star-rating.css"
 import { createReview } from "../../services/reviews-services";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { showLawyer } from "../../services/lawyers-services";
 
 export function CreateReview() {
 
+  const navigate = useNavigate();
+  const params = useParams();
+
   const [hover, setHover] = useState(null);
+
+  const [ lawyer, setLawyer ] = useState("")
+  
+  useEffect(() => {
+    showLawyer(params.id)
+    .then(setLawyer)
+    .catch(console.log)
+     // eslint-disable-next-line
+  }, [])
 
   const [ formData, setFormData ] = useState({
     rating: null,
@@ -21,7 +34,7 @@ export function CreateReview() {
     context: "",
     name: "",
     email: "",
-    lawyer_id: 1
+    lawyer_id: params.id
   });
   
   // eslint-disable-next-line
@@ -46,12 +59,13 @@ export function CreateReview() {
     console.log(formData)
     createReview(formData)
     .then(console.log)
-    .catch(console.log)    
+    .catch(console.log)
+    navigate(`/lawyers/${params.id}`)
   }
 
   return(
     <MainContainer>
-      <h1>Review</h1>
+      <h1>Review {lawyer.name}</h1>
       <DivisionLine />
       <main style={{marginTop: "1.5rem", marginBottom: "1.5rem"}}>
         <form onSubmit={handleReviewSubmit}>
