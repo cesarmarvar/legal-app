@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { colors } from '../../styles/colors'
 import { fonts } from '../../styles/fonts'
 
-function inputType(type) {
-  switch (type) {
+function inputType(opt) {
+  switch (opt) {
     case "query":
       return`
         height: 56px;
@@ -30,7 +30,7 @@ const SingleInput = styled.input`
     outline: none;
     border: 3px solid ${colors.orange.regular};
   }
-  ${(props) => inputType(props.type)};
+  ${(props) => inputType(props.opt)};
 
   ::placeholder {
     color: ${colors.blue.regular};
@@ -42,7 +42,7 @@ font-weight: 500;
 font-size: 18px;
 `
 
-export function Input({id, name, value, placeholder, onChange, label, ...props}) {
+export function Input({id, name, value, placeholder, onChange, label, type, ...props}) {
 
   return(
     <>
@@ -50,6 +50,7 @@ export function Input({id, name, value, placeholder, onChange, label, ...props})
         <SingleInput {...props}
           id={id}
           name={name}
+          type={type}
           value={value}
           placeholder={placeholder}
           onChange={onChange}
