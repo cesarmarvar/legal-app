@@ -1,42 +1,80 @@
-import { BiMenu } from "react-icons/bi";
-import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import { FlexRow } from "../../utils";
+import { Divide as Hamburger } from 'hamburger-react';
+import { useState } from "react";
+import { Title, Menu, MenuOption } from "./styles";
+import './header.css'
 
-
-const Title = styled.h1`
-  margin: 0px;
-  color: rgba(28, 32, 119, 0.91);
-  font-size: 32px;
-  font-weight: 600;
-  text-align: center;
-`
-const Menu = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-`
-//border: "2px solid red"
 function Header() {
-
-  function handleMenuClick() {
-    console.log("Click!")
-  }
 
   const navigate = useNavigate();
 
+  const [ isOpen, setOpen ] = useState(false)
+
+  const [ menuClass, setMenuClass ] = useState("menu hidden")
+  const [ isMenuClicked, setIsMenuClicked ] = useState(false)
+
+  function updateMenu() {
+    if(!isMenuClicked){
+      setMenuClass("menu visible")
+    }
+    else {
+      setMenuClass("menu hidden")
+    }
+    setIsMenuClicked(!isMenuClicked)
+  }
+
+  function handleNavClick(opt) {
+    switch (opt) {
+      case 1:
+        navigate('/');
+        setOpen(false);
+        setIsMenuClicked(false);
+        updateMenu();
+        break;
+      case 2:
+        navigate('/questions')
+        setOpen(false);
+        setIsMenuClicked(false);
+        updateMenu();
+        break;
+      case 3:
+        navigate('/lawyers/1')
+        setOpen(false);
+        setIsMenuClicked(false);
+        updateMenu();
+        break;
+      case 5:
+        navigate('/signup')
+        setOpen(false);
+        setIsMenuClicked(false);
+        updateMenu();
+        break;
+    }
+  }
+
   return(
-    <header style={{padding: "1rem"}}>
-      <Menu >
-        <BiMenu onClick={handleMenuClick} style={{marginTop: "6px"}} size="35px"/>
-      </Menu>
-      <FlexRow style={{justifyContent: "center"}}>
-        <Title
-        onClick={() => navigate(`/`)}
-        style={{cursor: "pointer"}}>Legal</Title>
-      </FlexRow>
-    </header>
+    <>
+      <header style={{padding: "1rem"}}>
+        <Menu className="burger-menu" onClick={updateMenu}>
+          <Hamburger rounded toggled={isOpen} toggle={setOpen} size={25}/>
+        </Menu>
+        <FlexRow style={{justifyContent: "center"}}>
+          <Title
+          onClick={() => navigate(`/`)}
+          style={{cursor: "pointer"}}>Legal</Title>
+        </FlexRow>
+      </header>
+      <div className={menuClass}>
+        <div className="menu-content">
+          <MenuOption onClick={() => handleNavClick(1)}>Lawyer Directory</MenuOption>
+          <MenuOption onClick={() => handleNavClick(2)}>Free QA </MenuOption>
+          <MenuOption onClick={() => handleNavClick(3)}>Abogados, Contact me</MenuOption>
+          <MenuOption onClick={() => handleNavClick(4)}>Im a lawyer</MenuOption>
+          <MenuOption onClick={() => handleNavClick(5)}><strong>Sign in</strong></MenuOption>
+        </div>
+      </div>
+    </>
   )
 }
 
