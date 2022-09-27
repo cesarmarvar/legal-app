@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/button";
 import { Input } from "../../components/input/input";
 import { Textarea } from "../../components/textarea/textarea";
@@ -6,9 +7,9 @@ import { createQuestion } from "../../services/questions-services";
 import { DivisionLine, FlexRow, FlexColumn, MainContainer } from "../../utils"
 import { InputContainer, Label } from "../create-review/styles";
 
-
 function CreateQuestionPage() {
 
+  const navigate = useNavigate();
   const [ questionData, setQuestionData ] = useState({
     question: "",
     explanation: "",
@@ -34,11 +35,12 @@ function CreateQuestionPage() {
     createQuestion(questionData)
     .then(console.log)
     .catch(console.log)
+    navigate('/questions')
   }
 
   return (
   <MainContainer>
-    <h1>Ask a Lawyer</h1>
+    <h2>Ask a Lawyer</h2>
     <DivisionLine />
     <main style={{marginTop: "1.5rem", marginBottom: "1.5rem"}}>
       <form>
