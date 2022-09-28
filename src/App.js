@@ -8,8 +8,12 @@ import IndexQuestionsPage from "./pages/index questions/index-questions";
 import ShowQuestion from "./pages/show question/show-question";
 import SignupPage from "./pages/signup/login pages/signup";
 import LoginPage from "./pages/signup/login pages/login";
+// import { useAuth } from "./context/auth-context";
 
 function App() {
+
+  // const { user } = useAuth();
+
   return (
     <>
       <Routes>

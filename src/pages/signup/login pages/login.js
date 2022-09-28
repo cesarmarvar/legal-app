@@ -2,8 +2,8 @@ import { DivisionLine, FlexColumn, MainContainer } from "../../../utils";
 import { Input } from "../../../components/input/input";
 import { Button } from "../../../components/button/button";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../../services/sessions-services";
 import { useState } from "react";
+import { useAuth } from "../../../context/auth-context";
 
 function LoginPage() {
 
@@ -11,7 +11,10 @@ const [ formData, setFormData ] = useState({
     email: "",
     password: ""
   })
+
   const { email, password } = formData;
+
+  const { login } = useAuth();
 
   const navigate = useNavigate();
 
@@ -23,14 +26,8 @@ const [ formData, setFormData ] = useState({
 
   function handleSubmit(e) {
     e.preventDefault();
-    login(formData)
-    .then(console.log)
-    .catch(console.log)
-    // navigate
-  }
-
-  function handleSignupLink() {
-    navigate('/signup');
+    login(formData);
+    navigate('/')
   }
 
   return (
@@ -68,7 +65,7 @@ const [ formData, setFormData ] = useState({
             type="primary" 
             size="wide"
             onClick={handleSubmit}
-          >Submit!</Button>
+          >Submit</Button>
           <a
             href="###" 
             style={{
@@ -76,8 +73,8 @@ const [ formData, setFormData ] = useState({
               margin: "0 auto",
               textDecoration: "underline"
             }}
-            onClick={handleSignupLink}
-          >Don't have an account yet? Sign up</a>
+            onClick={() => navigate('/signup')}
+          >Sign up</a>
         </FlexColumn>
       </form>
     </MainContainer>

@@ -8,6 +8,7 @@ import { reset, global } from './styles/global';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import { BrowserRouter } from "react-router-dom";
+import { AuthProvider } from './context/auth-context';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,9 +17,11 @@ root.render(
     <Global styles={reset}/>
     <Global styles={global}/>
       <BrowserRouter>
-        <Header />
-          <App />
-        <Footer />
+        <AuthProvider>
+          <Header />
+            <App />
+          <Footer />
+        </AuthProvider>
       </BrowserRouter>
   </React.StrictMode>
 );
