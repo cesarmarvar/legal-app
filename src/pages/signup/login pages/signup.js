@@ -29,10 +29,6 @@ function SignupPage() {
     // navigate
   }
 
-  function handleLoginLink() {
-    navigate('/login');
-  }
-
   return (
     <MainContainer>
       <h1>Create a user</h1>
@@ -68,7 +64,7 @@ function SignupPage() {
             type="primary" 
             size="wide"
             onClick={handleSubmit}
-          >Submit!</Button>
+          >Submit</Button>
           <a
             href="###" 
             style={{
@@ -76,8 +72,8 @@ function SignupPage() {
               margin: "0 auto",
               textDecoration: "underline"
             }}
-            onClick={handleLoginLink}
-          >Already have an account? Log in</a>
+            onClick={() => navigate('/login')}
+          >Log in</a>
         </FlexColumn>
       </form>
     </MainContainer>
