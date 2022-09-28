@@ -1,14 +1,14 @@
-const BASE_URL = "https://legalapp-0822.herokuapp.com/"
+import { tokenKey } from "../config";
+import apiFetch from "./api-fetch";
 
-export async function login(formData) {
-  const response = await fetch(`${BASE_URL}login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(formData)
+export function login(credentials) {
+  return apiFetch("login", { body: credentials }).then((u) => {
+    const { token, ...user } = u;
+    sessionStorage.setItem(tokenKey, token);
+    return user;
   });
+}
 
-  const data = response.json();
-  return data;
+export function logout() {
+  return apiFetch("/logout", { method: "DELETE" });
 }
