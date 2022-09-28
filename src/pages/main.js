@@ -32,11 +32,11 @@ function MainPage() {
         <FlexColumn style={{gap: "20px"}}>
           <Input 
             placeholder="Legal issue or Lawyer name" 
-            type="query"
+            opt="query"
           />
           <Input 
             placeholder="Location" 
-            type="query"
+            opt="query"
           />
           <Button onClick={handleQueryClick} size="tall" type="primary">get started</Button>
         </FlexColumn>
