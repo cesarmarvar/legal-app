@@ -7,6 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import IndexQuestionsPage from "./pages/index questions/index-questions";
 import ShowQuestion from "./pages/show question/show-question";
 import SignupPage from "./pages/signup/login pages/signup";
+import LoginPage from "./pages/signup/login pages/login";
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
         <Route path="lawyers/:id" element={<LawyerDetailPage />} />
         <Route path="reviews/new/:id" element={<CreateReview />} />
         <Route path="questions" element={<IndexQuestionsPage />} />
-        <Route path="questions/new/" element={<CreateQuestionPage />} />
+        <Route path="questions/new" element={<CreateQuestionPage />} />
         <Route path="questions/:id" element={<ShowQuestion />} />
-        <Route path="signup/" element={<SignupPage />} />
+        <Route path="signup" element={<SignupPage />} />
+        <Route path="login" element={<LoginPage />} />
       </Routes>
     </>
   );
