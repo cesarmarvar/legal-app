@@ -29,6 +29,10 @@ function SignupPage() {
     // navigate
   }
 
+  function handleLoginLink() {
+    navigate('/login');
+  }
+
   return (
     <MainContainer>
       <h1>Create a user</h1>
@@ -36,7 +40,7 @@ function SignupPage() {
       <br />
       <form>
         <FlexColumn style={{
-          gap: "1rem"
+          gap: "1.5rem"
         }}>
           <Input 
             id="email"
@@ -65,6 +69,15 @@ function SignupPage() {
             size="wide"
             onClick={handleSubmit}
           >Submit!</Button>
+          <a
+            href="###" 
+            style={{
+              cursor: "pointer",
+              margin: "0 auto",
+              textDecoration: "underline"
+            }}
+            onClick={handleLoginLink}
+          >Already have an account? Log in</a>
         </FlexColumn>
       </form>
     </MainContainer>
