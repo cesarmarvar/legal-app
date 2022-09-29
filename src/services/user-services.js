@@ -1,4 +1,6 @@
 import { BASE_URL, tokenKey } from "../config";
+import apiFetch from "./api-fetch";
+
 
 export async function createUser(formData) {
   const response = await fetch(`${BASE_URL}profile`, {
@@ -12,14 +14,10 @@ export async function createUser(formData) {
   return data
 }
 
-export async function getUser() {
-  const response = await fetch(`${BASE_URL}profile`, {
-    method: "GET",
-    headers: {
-      "Authorization": `Token token=${tokenKey}`
-    },
-  })
-
-  const data = response.json();
-  return data
+export function getUser() {
+  return apiFetch("profile").then((u) => {
+    const { token, ...user } = u;
+    // sessionStorage.setItem(tokenKey, token);
+    return user;
+  });
 }
