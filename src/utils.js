@@ -19,3 +19,10 @@ export const DivisionLine = styled.div`
 export const MainContainer = styled.div`
   margin: 2rem;
 `
+
+export const ProfilePic = styled.img`
+  height: 87px;
+  width: 103px;
+  marginTop: 2rem;
+  marginBottom: 2rem;
+`

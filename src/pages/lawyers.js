@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Button } from "../components/button/button";
 import { getLawyers } from "../services/lawyers-services";
 import { colors } from "../styles/colors";
-import { DivisionLine, FlexColumn, FlexRow } from "../utils";
+import { DivisionLine, FlexColumn, FlexRow, ProfilePic } from "../utils";
 import { MdStars } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
@@ -93,7 +93,7 @@ export function LawyersPage() {
           <FlexRow style={{
             gap: "2rem"
           }}>
-            <div>imagen</div>
+            <ProfilePic src={require('../assets/anonymous.png')}/>
             <FlexColumn style={{
               gap: "8px",
               width: "100%"

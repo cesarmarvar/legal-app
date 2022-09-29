@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useState } from "react"
 import { showLawyer } from "../../services/lawyers-services";
-import { DivisionLine, FlexColumn, FlexRow } from "../../utils";
+import { DivisionLine, FlexColumn, FlexRow, ProfilePic } from "../../utils";
 import { Button } from "../../components/button/button";
 import { printRatingStars } from "../lawyers";
 import { getLawyerReviews } from "../../services/reviews-services";
 import { Content, SectionContainer, Subtitle } from "./styles";
 import { useParams, useNavigate } from "react-router-dom";
+
 
 function formatReviewerName(name) {
   return name === null ? "Anonymous" : name
@@ -35,7 +36,7 @@ export function LawyerDetailPage() {
       <FlexColumn style={{gap: "1rem", margin: "2rem", alignItems: "center"}}>
         <h3 style={{textAlign: "center"}}>{lawyer.lawyer_name}</h3>
         <DivisionLine />
-        <div style={{height: "87px", width: "103px", border: "1px solid black", marginTop: "2rem", marginBottom: "2rem"}}>image</div>
+        <ProfilePic src={require('../../assets/anonymous.png')} />
         <Button size="widest" type="primary">Website</Button>
       </FlexColumn>
       <SectionContainer>
