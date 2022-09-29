@@ -1,4 +1,4 @@
-import { BASE_URL, tokenKey } from "../config";
+import { BASE_URL } from "../config";
 import apiFetch from "./api-fetch";
 
 
