@@ -65,7 +65,7 @@ export function CreateReview() {
 
   return(
     <MainContainer>
-      <h2>Review {lawyer.name}</h2>
+      <h2>Review {lawyer.lawyer_name}</h2>
       <DivisionLine />
       <main style={{marginTop: "1.5rem", marginBottom: "1.5rem"}}>
         <form onSubmit={handleReviewSubmit}>

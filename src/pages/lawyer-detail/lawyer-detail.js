@@ -33,13 +33,13 @@ export function LawyerDetailPage() {
   return(
     <>
       <FlexColumn style={{gap: "1rem", margin: "2rem", alignItems: "center"}}>
-        <h3 style={{textAlign: "center"}}>{lawyer.name}</h3>
+        <h3 style={{textAlign: "center"}}>{lawyer.lawyer_name}</h3>
         <DivisionLine />
         <div style={{height: "87px", width: "103px", border: "1px solid black", marginTop: "2rem", marginBottom: "2rem"}}>image</div>
         <Button size="widest" type="primary">Website</Button>
       </FlexColumn>
       <SectionContainer>
-        <Subtitle>About {lawyer.name}</Subtitle>
+        <Subtitle>About {lawyer.lawyer_name}</Subtitle>
         <Content >{lawyer.bio}</Content>
         <DivisionLine />
       </SectionContainer>
@@ -78,7 +78,7 @@ export function LawyerDetailPage() {
                   <FlexRow style={{marginTop: "4px", marginBottom: "4px"}}>
                     {printRatingStars(review.rating)}
                   </FlexRow>
-                  <p style={{color: "gray", fontSize: "12px"}}>Posted by {formatReviewerName(review.name)} on {review.created_at}</p>
+                  <p style={{color: "gray", fontSize: "12px"}}>Posted by {formatReviewerName(review.reviewer_name)} on {review.created_at}</p>
                   <p>{review.content}</p>
                 </FlexColumn>
                 )
@@ -88,7 +88,7 @@ export function LawyerDetailPage() {
           size="wide" 
           style={{margin: "0 auto"}}
           onClick={() => navigate(`/reviews/new/${lawyer.id}`)}
-        >Review {lawyer.name}</Button>
+        >Review {lawyer.lawyer_name}</Button>
       </SectionContainer>
     </>
 

@@ -101,7 +101,7 @@ export function LawyersPage() {
               <h3
               style={{cursor: "pointer"}}
                 onClick={() => navigate(`/lawyers/${lawyer.id}`)}
-              >{lawyer.name}</h3>
+              >{lawyer.lawyer_name}</h3>
               <p>{lawyer.credentials}</p>
               <FlexRow style={{justifyContent: "space-between"}}>
                 <p>licensed for {lawyer.years_licensed} years</p>
