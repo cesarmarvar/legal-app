@@ -1,4 +1,5 @@
 import { BASE_URL } from "../config";
+import apiFetch from "../services/api-fetch";
 
 export async function getQuestions() {
   const response = await fetch(`${BASE_URL}questions`, {
@@ -16,15 +17,6 @@ export async function showQuestion(id) {
   return data
 }
 
-export async function createQuestion(formData) {
-  const response = await fetch(`${BASE_URL}questions/new`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Token token=toy8MGKCTQTsoqW2eGWs1Z5u"
-    },
-    body: JSON.stringify(formData)
-  })
-  const data = response.json();
-  return data
+export function createQuestion(formData) {
+  return apiFetch('questions/new', {body: formData});
 }
