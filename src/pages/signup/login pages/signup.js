@@ -2,18 +2,21 @@ import { useState } from "react";
 import { DivisionLine, FlexColumn, MainContainer } from "../../../utils";
 import { Input } from "../../../components/input/input";
 import { Button } from "../../../components/button/button";
-import { createUser } from "../../../services/user-services";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../context/auth-context";
 
 function SignupPage() {
 
   const [ formData, setFormData ] = useState({
+    username: "",
     email: "",
     password: ""
   })
-  const { email, password } = formData;
+  const { username, email, password } = formData;
 
   const navigate = useNavigate();
+
+  const { signup } = useAuth();
 
   function handleChange(e){
     e.preventDefault();
@@ -23,15 +26,13 @@ function SignupPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    createUser(formData)
-    .then(console.log)
-    .catch(console.log)
-    // navigate
+    signup(formData);
+    navigate('/');
   }
 
   return (
     <MainContainer>
-      <h1>Create a user</h1>
+      <h1>Create an account</h1>
       <DivisionLine />
       <br />
       <form>
@@ -39,9 +40,17 @@ function SignupPage() {
           gap: "1.5rem"
         }}>
           <Input 
+            id="username"
+            name="username"
+            label="Username:"
+            placeholder="John Doe"
+            value={username}
+            onChange={handleChange}
+          />
+          <Input 
             id="email"
             name="email"
-            label="Email:"
+            label="Email:*"
             type="email"
             placeholder="example@mail.com"
             value={email}
@@ -50,7 +59,7 @@ function SignupPage() {
           <Input 
             id="password"
             name="password"
-            label="Password:"
+            label="Password:*"
             type="password"
             placeholder="*******"
             value={password}
@@ -73,7 +82,7 @@ function SignupPage() {
               textDecoration: "underline"
             }}
             onClick={() => navigate('/login')}
-          >Log in</a>
+          >Already registered? Log in</a>
         </FlexColumn>
       </form>
     </MainContainer>
