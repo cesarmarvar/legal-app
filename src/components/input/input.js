@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from '../../styles/colors'
 import { fonts } from '../../styles/fonts'
+import { FlexColumn } from "../../utils";
 
 function inputType(opt) {
   switch (opt) {
@@ -45,7 +46,7 @@ font-size: 18px;
 export function Input({id, name, value, placeholder, onChange, label, type, ...props}) {
 
   return(
-    <>
+    <FlexColumn style={{gap: "0.6rem"}}>
         <Label htmlFor={id || name}>{label}</Label>
         <SingleInput {...props}
           id={id}
@@ -55,6 +56,6 @@ export function Input({id, name, value, placeholder, onChange, label, type, ...p
           placeholder={placeholder}
           onChange={onChange}
         />
-    </>
+    </FlexColumn>
   )
 }

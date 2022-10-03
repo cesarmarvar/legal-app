@@ -3,18 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/button";
 import { Input } from "../../components/input/input";
 import { Textarea } from "../../components/textarea/textarea";
+import { useAuth } from "../../context/auth-context";
 import { createQuestion } from "../../services/questions-services";
 import { DivisionLine, FlexRow, FlexColumn, MainContainer } from "../../utils"
 import { InputContainer, Label } from "../create-review/styles";
 
 function CreateQuestionPage() {
 
+  const { user } = useAuth();
   const navigate = useNavigate();
+
   const [ questionData, setQuestionData ] = useState({
     question: "",
     explanation: "",
     confirmation: "",
-    user_id: 1
+    user_id: user?.id
   })
 
   const { question, explanation } = questionData
@@ -37,7 +40,6 @@ function CreateQuestionPage() {
     .catch(console.log)
     navigate('/questions')
   }
-
   return (
   <MainContainer>
     <h2>Ask a Lawyer</h2>
