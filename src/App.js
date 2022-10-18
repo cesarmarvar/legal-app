@@ -8,6 +8,8 @@ import IndexQuestionsPage from "./pages/index questions/index-questions";
 import ShowQuestion from "./pages/show question/show-question";
 import SignupPage from "./pages/signup/login pages/signup";
 import LoginPage from "./pages/signup/login pages/login";
+import EditProfilePage from "./pages/edit-lawyer-profile";
+import ShowProfile from "./pages/show-profile";
 // import { useAuth } from "./context/auth-context";
 
 function App() {
@@ -26,6 +28,8 @@ function App() {
         <Route path="questions/:id" element={<ShowQuestion />} />
         <Route path="signup" element={<SignupPage />} />
         <Route path="login" element={<LoginPage />} />
+        <Route path="show-profile" element={<ShowProfile />} />
+        <Route path="lawyer-profile/edit" element={<EditProfilePage />} />
       </Routes>
     </>
   );

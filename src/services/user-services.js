@@ -10,3 +10,7 @@ export function getUser() {
     return user;
   });
 }
+
+export function getUsersLawyer() {
+  return apiFetch("my-lawyer-profile");
+}

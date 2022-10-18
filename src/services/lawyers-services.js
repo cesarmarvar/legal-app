@@ -1,4 +1,5 @@
 import { BASE_URL } from "../config";
+import apiFetch from "./api-fetch";
 
 export async function getLawyers() {
   const response = await fetch(`${BASE_URL}lawyers`, {
@@ -9,11 +10,10 @@ export async function getLawyers() {
   return data
 }
 
-export async function showLawyer(id) {
-  const response = await fetch(`${BASE_URL}lawyers/${id}`, {
-    method: "GET"
-  });
+export function showLawyer(id) {
+  return apiFetch(`lawyers/${id}`);
+}
 
-  const data = response.json();
-  return data
+export function editLawyerProfile(id, formData){
+  return apiFetch(`/lawyers/${id}`, { method: "PATCH", body: formData});
 }

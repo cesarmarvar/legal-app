@@ -26,9 +26,8 @@ function IndexQuestionsPage() {
         >Free Q&A</h3>
       {questions.map((q, index) => {
         return(
-            <>
+            <div key={index}>
             <FlexColumn
-            key={index}
               style={{
                 gap: "0.5rem",
                 marginBottom: "1rem"
@@ -48,7 +47,7 @@ function IndexQuestionsPage() {
                   fontSize: "12px", 
                   fontWeight: "600"
                 }}
-              >Answered by attorney... </p>
+              >{ q.answers_count > 0 ? `Answered by ${q.answers_count} attorneys ` : "No answers yet"}</p>
               <p 
                 style={{
                   textAlign: "justify",
@@ -57,7 +56,7 @@ function IndexQuestionsPage() {
                 >{q.explanation}</p>
             </FlexColumn>
             <DivisionLine />
-          </>
+          </div>
         )
       })}
     </MainContainer>

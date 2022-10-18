@@ -26,3 +26,15 @@ export const ProfilePic = styled.img`
   marginTop: 2rem;
   marginBottom: 2rem;
 `
+
+export const VerticalLine = styled.div`
+  border: 1px solid ${colors.gray.regular};
+  width: 0px;
+  height: 100vw;
+`
+
+export const ThinDivisionLine = styled.div`
+  border-top: 1px solid ${colors.gray.regular};
+  width: 100%;
+  height: 0px;
+`
