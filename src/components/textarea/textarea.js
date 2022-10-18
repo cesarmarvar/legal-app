@@ -25,18 +25,19 @@ font-weight: 500;
 font-size: 18px;
 `
 
-export function Textarea({id, name, value, placeholder, label, ...props}) {
+export function Textarea({id, name, value, placeholder, onChange, label, children, ...props}) {
 
   return(
     <>
       <Label htmlFor={id || name}>{label}</Label>
       <SingleTextarea {...props}
-      id={id}
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      label={label}
-      />
+        id={id}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        label={label}
+        onChange={onChange}
+      >{children}</SingleTextarea>
     </>
   )
 }

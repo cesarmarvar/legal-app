@@ -20,3 +20,7 @@ export async function showQuestion(id) {
 export function createQuestion(formData) {
   return apiFetch('questions/new', {body: formData});
 }
+
+export function getQuestionAnswers(id) {
+  return apiFetch(`question/answers/${id}`);
+}
