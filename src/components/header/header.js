@@ -59,8 +59,8 @@ function Header() {
         updateMenu();
         logout();
         break;
-      case 6:
-        navigate('/profile')
+      case 7:
+        navigate('/show-profile')
         setOpen(false);
         setIsMenuClicked(false);
         updateMenu();
@@ -72,7 +72,7 @@ function Header() {
     <>
       <header style={{padding: "1rem"}}>
         <Menu className="burger-menu" onClick={updateMenu}>
-          <Hamburger rounded toggled={isOpen} toggle={setOpen} size={25}/>
+          <Hamburger rounded toggled={isOpen} toggle={setOpen} size={20}/>
         </Menu>
         <FlexRow style={{justifyContent: "center"}}>
           <Title
