@@ -21,7 +21,8 @@ export const reset = css`
 
 export const global = css`
   body {
-    font-family: ${fonts.primary}
+    font-family: ${fonts.primary};
+    background-color: #F9F9F9
   }
 `
 
