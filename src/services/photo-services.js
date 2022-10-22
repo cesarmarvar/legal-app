@@ -5,5 +5,9 @@ export function uploadPhoto(formData) {
 }
 
 export function getUserPhoto() {
-  return apiFetch('lawyer/photo');
+  return apiFetch('user/photo');
+}
+
+export function getLawyerPhoto(id) {
+  return apiFetch(`lawyer/photo/${id}`);
 }
