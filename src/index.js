@@ -5,8 +5,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { reset, global } from './styles/global';
-import Header from './components/header/header';
-import Footer from './components/footer/footer';
+// import Header from './components/header/header';
+// import Footer from './components/footer/footer';
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from './context/auth-context';
 
@@ -18,9 +18,7 @@ root.render(
     <Global styles={global}/>
       <BrowserRouter>
         <AuthProvider>
-          <Header />
-            <App />
-          <Footer />
+          <App />
         </AuthProvider>
       </BrowserRouter>
   </React.StrictMode>

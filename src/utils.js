@@ -18,6 +18,8 @@ export const DivisionLine = styled.div`
 
 export const MainContainer = styled.div`
   margin: 2rem;
+  // border: 1px solid black
+
 `
 
 export const ProfilePic = styled.img`
