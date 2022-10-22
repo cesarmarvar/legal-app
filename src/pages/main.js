@@ -63,17 +63,17 @@ function MainPage() {
         <FlexColumn style={{ gap: "20px" }}>
           <FlexColumn>
             <Input
-              placeholder="Legal issue or Lawyer name"
+              placeholder="Búsqueda por nombre"
               opt="query"
               value={lawyerQuery}
               onChange={e => setLawyerQuery(e.target.value)}
             />
-            {queryResults ? (
+            {queryResults.length > 0 ? (
               <div>
                 <ul
                   style={{
                     position: "absolute",
-                    border: "1px solid black",
+                    border: `1px solid ${colors.orange.regular}`,
                     backgroundColor: "white"
                   }}
                 >
@@ -88,35 +88,35 @@ function MainPage() {
             ) : null}
           </FlexColumn>
           <Input
-            placeholder="Location"
+            placeholder="Búsqueda por ubicación"
             opt="query"
             value={locationQuery}
             onChange={e => setLocationQuery(e.target.value)}
           />
-          <Button onClick={handleQueryClick} size="tall" type="primary">get started</Button>
+          <Button onClick={handleQueryClick} size="tall" type="primary">Buscar</Button>
         </FlexColumn>
       </form>
       <H3>Busca por práctica</H3>
       <FlexColumn style={{ gap: "3.5rem" }}>
         <PracticeCard
-          lawType="Family"
-          practices={["Divorce", "Child Custody", "Child Support"]}
+          lawType="Familia"
+          practices={["Divorcio", "Custodia", "Alimentos"]}
           icon={<MdFamilyRestroom
             style={{ position: "absolute", top: "-20px" }}
             size="40px" color={`${colors.blue.regular}`}
           />}
         />
         <PracticeCard
-          lawType="Employment"
-          practices={["Discrimination", "Compensation", "Termination"]}
+          lawType="Laboral"
+          practices={["Despidos", "Compensaciones", "Discriminación"]}
           icon={<BsBriefcaseFill
             style={{ position: "absolute", top: "-20px" }}
             size="40px" color={`${colors.blue.regular}`}
           />}
         />
         <PracticeCard
-          lawType="Real estate"
-          practices={["Landlord", "Tenant", "Eviction"]}
+          lawType="Inmobiliario"
+          practices={["Compraventa", "Alquiler", "Desalojo"]}
           icon={<MdHouse
             style={{ position: "absolute", top: "-20px" }}
             size="40px" color={`${colors.blue.regular}`}
@@ -128,9 +128,9 @@ function MainPage() {
         type="secondary"
         size="wide"
       >
-        view all Legal Fields
+        Ver todas las materias
       </Button>
-      <H3>Ask a Lawyer</H3>
+      <H3>Pregunta a un abogado</H3>
       <AskALawyer style={{ marginBottom: "1rem" }} />
       <Disclaimer />
     </FlexColumn>

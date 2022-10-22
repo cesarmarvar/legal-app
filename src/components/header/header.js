@@ -82,12 +82,12 @@ function Header() {
       </header>
       <div className={menuClass}>
         <div className="menu-content">
-          <MenuOption onClick={() => handleNavClick(1)}>Lawyer Directory</MenuOption>
-          <MenuOption onClick={() => handleNavClick(2)}>Free QA </MenuOption>
-          <MenuOption onClick={() => handleNavClick(3)}>Abogados, Contact me</MenuOption>
-          <MenuOption onClick={() => handleNavClick(4)}>Im a lawyer</MenuOption>
-          {!user ? <MenuOption onClick={() => handleNavClick(5)}><strong>Sign in</strong></MenuOption> : 
-          <><MenuOption onClick={() => handleNavClick(7)}>My profile</MenuOption>
+          <MenuOption onClick={() => handleNavClick(1)}>Directorio de abogados</MenuOption>
+          <MenuOption onClick={() => handleNavClick(2)}>Banco de Preguntas</MenuOption>
+          <MenuOption onClick={() => handleNavClick(3)}>Dejar mi contacto</MenuOption>
+          <MenuOption onClick={() => handleNavClick(4)}>Soy abogado</MenuOption>
+          {!user ? <MenuOption onClick={() => handleNavClick(5)}><strong>Signup / Login</strong></MenuOption> : 
+          <><MenuOption onClick={() => handleNavClick(7)}>Mi perfil</MenuOption>
           <MenuOption onClick={() => handleNavClick(6)}><strong>Logout</strong></MenuOption></>}
         </div>
       </div>

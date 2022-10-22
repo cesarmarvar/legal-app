@@ -15,9 +15,11 @@ const Container = styled.div`
   text-align: center;
   align-items: center;
   justify-content: space-between;
-  transition: .3s ease-in;
+  transition: .2s ease-in;
   &:hover {
     transform: scale(1.1);
+  &:active {
+    transform: scale(0.98)
 `
 
 export function PracticeCard({lawType, practices, icon}) {
