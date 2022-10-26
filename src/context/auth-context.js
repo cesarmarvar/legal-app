@@ -8,17 +8,28 @@ const AuthContext = createContext();
 function AuthProvider({children}) {
 
   const [ user, setUser ] = useState(null);
+  const [ error, setError ] = useState(null);
+  const [ isLoading, setIsLoading ] = useState(true);
 
   useEffect(() => {
-    getUser().then(setUser).catch(console.log);
+    getUser().then(data => {
+      setUser(data);
+      setTimeout(() => { setIsLoading(false); }, 1000);
+    }).catch((_e) => {
+      setIsLoading(false);
+    });
   }, []);
 
   function login(credentials) {
-    auth.login(credentials).then(setUser).catch(console.log);
+    auth.login(credentials).then(setUser).catch(e => {
+      setError(e);
+    });
   }
 
   function signup(credentials) {
-    createUser(credentials).then(setUser).catch(console.log);
+    createUser(credentials).then(setUser).catch(e => {
+      setError(e.message);
+    });
   }
 
   function logout(){
@@ -31,6 +42,8 @@ function AuthProvider({children}) {
   return(
     <AuthContext.Provider value={{
       user,
+      error,
+      isLoading,
       login,
       signup,
       logout,
