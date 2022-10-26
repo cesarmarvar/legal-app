@@ -7,6 +7,7 @@ import { printRatingStars } from "../lawyers";
 import { getLawyerReviews } from "../../services/reviews-services";
 import { Content, SectionContainer, Subtitle } from "./styles";
 import { useParams, useNavigate } from "react-router-dom";
+// import { getLawyerPhoto } from "../../services/photo-services";
 
 
 function formatReviewerName(name) {
@@ -17,6 +18,7 @@ export function LawyerDetailPage() {
  
   const [ lawyer, setLawyer ] = useState("");
   const [ reviews, setReviews ] = useState([]);
+  // const [ lawyerPhoto, setLawyerPhoto ] = useState();
 
   const navigate = useNavigate();
   const params = useParams();
@@ -28,6 +30,9 @@ export function LawyerDetailPage() {
     getLawyerReviews(params.id)
     .then(setReviews)
     .catch(console.log)
+    // getLawyerPhoto(params.id)
+    // .then((photo) => setLawyerPhoto(photo[0].image))
+    // .catch(console.log)
   }, [params])
 
 
@@ -36,7 +41,10 @@ export function LawyerDetailPage() {
       <FlexColumn style={{gap: "1rem", margin: "2rem", alignItems: "center"}}>
         <h3 style={{textAlign: "center"}}>{lawyer.lawyer_name}</h3>
         <DivisionLine />
-        <ProfilePic src={require('../../assets/anonymous.png')} />
+        <ProfilePic 
+          // src={require('../../assets/anonymous.png')} 
+          src={lawyer.image} 
+        />
         <Button size="widest" type="primary">Website</Button>
       </FlexColumn>
       <SectionContainer>

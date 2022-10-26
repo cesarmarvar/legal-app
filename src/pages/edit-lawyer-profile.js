@@ -41,7 +41,18 @@ function EditProfilePage() {
     await uploadPhoto(data);
   }
 
-  const { id, lawyer_name, years_licensed, bio, credentials, payment_method, social_media, state_location, office_address, office_phone } = formData
+  const { 
+    id, 
+    lawyer_name, 
+    years_licensed, 
+    bio, 
+    credentials, 
+    payment_method, 
+    social_media, 
+    state_location, 
+    office_address, 
+    office_phone 
+  } = formData
 
   useEffect(() => {
     async function fetch() {

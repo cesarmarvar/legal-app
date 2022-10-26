@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { Subtitle, Content } from "./lawyer-detail/styles";
 import { getUsersLawyer } from "../services/user-services";
 import { useNavigate } from "react-router-dom";
+// import { getLawyerPhoto } from "../services/photo-services";
 
 
 const Label = styled.label`
@@ -32,8 +33,22 @@ function ShowProfile() {
   const [ show, setShow ] = useState("basic-profile");
   const [ lawyer, setLawyer ] = useState("");
 
+  const [ photo, setPhoto ] = useState();
+
   useEffect(() => {
     getUsersLawyer().then(setLawyer).catch(console.log)
+    // getLawyerPhoto(1).then(setPhoto).catch(console.log)
+    // async function fetch() {
+    //   try {
+    //     const response = await getUsersLawyer();
+    //     setLawyer(response);
+    //     const lawyerPhoto = await getLawyerPhoto(response.id);
+    //     setPhoto(lawyerPhoto[0].image ? lawyerPhoto[0].image : null);
+    //   } catch(e) {
+    //     console.error(e.message)
+    //   }
+    // }
+    // fetch();
   }, [])
 
 
@@ -59,7 +74,9 @@ function ShowProfile() {
       <VerticalLine style={{marginLeft: "1rem"}}/>
       {show === "basic-profile" ? 
         <FlexColumn style={{width: "100%", gap: "2rem"}}>
-          <ProfilePic style={{margin: "0 auto"}}src={require('../assets/anonymous.png')}/>
+          <ProfilePic 
+            style={{margin: "0 auto"}}
+            src={require('../assets/anonymous.png')}/>
           <FlexColumn style={{
             gap: "2rem",
             marginLeft: "2rem"
@@ -79,7 +96,7 @@ function ShowProfile() {
         : 
 
         <FlexColumn style={{width: "100%", gap: "0.8rem"}}>
-          <ProfilePic style={{margin: "0 auto"}}src={require('../assets/anonymous.png')} />
+          <ProfilePic style={{margin: "0 auto"}} src={ photo ? photo : require('../assets/anonymous.png')}  />
           <SingleSectionContainer>
             <Subtitle>About {lawyer.lawyer_name}</Subtitle>
             <Content >{lawyer.bio}</Content>

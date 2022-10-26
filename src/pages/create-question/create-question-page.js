@@ -17,7 +17,7 @@ function CreateQuestionPage() {
     question: "",
     explanation: "",
     confirmation: "",
-    user_id: user?.id
+    user_id: user.id
   })
 
   const { question, explanation } = questionData
