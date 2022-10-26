@@ -46,6 +46,12 @@ function Header() {
         setIsMenuClicked(false);
         updateMenu();
         break;
+      case 4:
+        navigate('/lawyer-profile/create')
+        setOpen(false);
+        setIsMenuClicked(false);
+        updateMenu();
+        break;
       case 5:
         navigate('/signup')
         setOpen(false);

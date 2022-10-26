@@ -23,10 +23,11 @@ export const MainContainer = styled.div`
 `
 
 export const ProfilePic = styled.img`
-  height: 87px;
-  width: 103px;
+  height: 100px;
+  width: 100px;
   marginTop: 2rem;
   marginBottom: 2rem;
+  // overflow: hidden;
 `
 
 export const VerticalLine = styled.div`

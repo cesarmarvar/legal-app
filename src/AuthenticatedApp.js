@@ -12,6 +12,7 @@ import EditProfilePage from "./pages/edit-lawyer-profile";
 import ShowProfile from "./pages/show-profile";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
+import CreateLawyerPage from "./pages/create-lawyer";
 
 function AuthenticatedApp() {
 
@@ -29,6 +30,7 @@ function AuthenticatedApp() {
       <Route path="signup" element={<SignupPage />} />
       <Route path="login" element={<LoginPage />} />
       <Route path="show-profile" element={<ShowProfile />} />
+      <Route path="lawyer-profile/create" element={<CreateLawyerPage />} />
       <Route path="lawyer-profile/edit" element={<EditProfilePage />} />
     </Routes>
     <Footer />

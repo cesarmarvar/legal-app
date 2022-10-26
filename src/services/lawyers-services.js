@@ -14,6 +14,12 @@ export function showLawyer(id) {
   return apiFetch(`lawyers/${id}`);
 }
 
+export function createLawyer(formData){
+  return apiFetch('lawyers/new', {
+    body: formData
+  })
+}
+
 export function editLawyerProfile(id, formData){
   return apiFetch(`/lawyers/${id}`, { method: "PATCH", body: formData});
 }

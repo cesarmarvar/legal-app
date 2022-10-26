@@ -8,7 +8,6 @@ import { Button } from "../components/button/button";
 import { useNavigate } from "react-router-dom";
 import { getLawyerPhoto, uploadPhoto } from "../services/photo-services";
 import { uploadImage } from "../services/cloudinary";
-//import { getUserPhoto, uploadPhoto } from "../services/photo-services";
 
 function EditProfilePage() {
 
