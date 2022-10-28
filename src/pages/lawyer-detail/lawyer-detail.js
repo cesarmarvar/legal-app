@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react"
 import { showLawyer } from "../../services/lawyers-services";
-import { DivisionLine, FlexColumn, FlexRow, ProfilePic } from "../../utils";
+import { DivisionLine, FlexColumn, FlexRow, BigProfilePic } from "../../utils";
 import { Button } from "../../components/button/button";
 import { printRatingStars } from "../lawyers";
 import { getLawyerReviews } from "../../services/reviews-services";
@@ -41,7 +41,7 @@ export function LawyerDetailPage() {
       <FlexColumn style={{gap: "1rem", margin: "2rem", alignItems: "center"}}>
         <h3 style={{textAlign: "center"}}>{lawyer.lawyer_name}</h3>
         <DivisionLine />
-        <ProfilePic 
+        <BigProfilePic 
           // src={require('../../assets/anonymous.png')} 
           src={lawyer.image} 
         />

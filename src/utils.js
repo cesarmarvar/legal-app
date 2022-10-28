@@ -30,6 +30,22 @@ export const ProfilePic = styled.img`
   // overflow: hidden;
 `
 
+export const BigProfilePic = styled.img`
+  height: 175px;
+  width: 175px;
+  marginTop: 2rem;
+  marginBottom: 2rem;
+  overflow: hidden;
+`
+
+export const ThumbnailPic = styled.img`
+  height: 27px;
+  width: 25px;
+  margin-right: 0.3rem;
+  margin-top: 1px;
+  // overflow: hidden;
+`
+
 export const VerticalLine = styled.div`
   border: 1px solid ${colors.gray.regular};
   width: 0px;

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from '../styles/colors';
 import { Input } from '../components/input/input'
-import { FlexColumn } from "../utils";
+import { FlexColumn, FlexRow, ThumbnailPic } from "../utils";
 import { Button } from '../components/button/button';
 import { PracticeCard } from "../components/practice-card/practice-card";
 import { MdFamilyRestroom, MdHouse } from 'react-icons/md';
@@ -10,7 +10,6 @@ import { Disclaimer } from "../components/disclaimer/disclaimer";
 import { AskALawyer } from "../components/ask-lawyer/ask-a-lawyer";
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
-
 
 
 const Li = styled.li`
@@ -81,7 +80,12 @@ function MainPage() {
                     return <Li
                       key={result.id}
                       onClick={() => navigate(`lawyers/${result.id}`)}
-                    >{result.lawyer_name}</Li>
+                    >
+                      <FlexRow style={{justifyContent: "space-between"}}>
+                        <p>{result.lawyer_name}</p>
+                        <ThumbnailPic src={result.image} />
+                      </FlexRow>
+                    </Li>
                   })}
                 </ul>
               </div>
