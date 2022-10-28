@@ -12,11 +12,12 @@ import { uploadImage } from "../services/cloudinary";
 function EditProfilePage() {
 
   const navigate = useNavigate();
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
   const [photo, setPhoto] = useState(null);
 
   const [ formData, setFormData ] = useState({
     id: 0,
+    image: "",
     email: "",
     lawyer_name: "",
     years_licensed: 0,
@@ -42,6 +43,7 @@ function EditProfilePage() {
 
   const { 
     id, 
+    image,
     lawyer_name, 
     years_licensed, 
     bio, 
@@ -100,12 +102,12 @@ function EditProfilePage() {
       <DivisionLine />
       <form onSubmit={(e) => handlePhotoSubmit(e, id)}>
         <FlexColumn style={{gap: "1rem"}}>
-          <ProfilePic src={photo}/>
+          <ProfilePic src={image}/>
           <input 
             type="file"
             name="photo"
             accept='image/*'
-            onChange={(e) => setImage(e.target.files[0])}
+            onChange={(e) => setPhoto(e.target.files[0])}
           />
             <Button type="primary" size="medium">Upload photo</Button>
         </FlexColumn>

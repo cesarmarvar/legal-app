@@ -93,7 +93,7 @@ export function LawyersPage() {
           <FlexRow style={{
             gap: "2rem"
           }}>
-            <ProfilePic src={ lawyer.image ? lawyer.image : require('../assets/anonymous.png')}/>
+            <ProfilePic src={ lawyer.image.length > 0 ? lawyer.image : require('../assets/anonymous.png')}/>
             <FlexColumn style={{
               gap: "8px",
               width: "100%"
