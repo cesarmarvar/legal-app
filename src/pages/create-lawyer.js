@@ -6,14 +6,15 @@ import { Button } from "../components/button/button";
 import { createLawyer } from "../services/lawyers-services";
 import { uploadImage } from "../services/cloudinary";
 import { useAuth } from "../context/auth-context";
-
+import { useNavigate } from "react-router-dom";
 
 function CreateLawyerPage(){
 
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const [ photo, setPhoto ] = useState();
-
+  // const [ createdLawyer, setCreatedLawyer ] = useState();
   const [ formData, setFormData ] = useState({
     lawyer_name: "",
     years_licensed: "",
@@ -53,11 +54,8 @@ function CreateLawyerPage(){
     // if(image === "") return;
     const response = await uploadImage(photo);
     setFormData({...formData, image: response});
-    console.log(image)
-    console.log("=====")
   }
-
-  console.log(image)
+  // console.log(image)
 
   function handleChange(e){
     e.preventDefault();
@@ -69,6 +67,8 @@ function CreateLawyerPage(){
     e.preventDefault();
     console.log(formData)
     createLawyer(formData).then(console.log).catch(console.log)
+    // console.log(createdLawyer)
+    navigate(`/`)
   };
 
   return(
@@ -76,6 +76,7 @@ function CreateLawyerPage(){
       <h1>Build Profile</h1>
       <DivisionLine />
       <form onSubmit={handlePhotoSubmit}>
+      {/* <form > */}
         <FlexColumn style={{gap: "1rem"}}>
           <div>
             <ProfilePic src={image ? image : require("../assets/anonymous.png")}/>
@@ -83,10 +84,13 @@ function CreateLawyerPage(){
               type="file"
               name="photo"
               accept='image/*'
-              onChange={(e) => setPhoto(e.target.files[0])}
+              onChange={(e) => {
+                setPhoto(e.target.files[0])
+                // handlePhotoSubmit();
+              }}
             />
           </div>
-          <Button type="primary" size="medium">Upload photo</Button>
+          <Button type="primary" size="medium">Set photo</Button>
         </FlexColumn>
       </form>
       <form onSubmit={handleSubmit}>
