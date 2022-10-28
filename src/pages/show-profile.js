@@ -1,21 +1,13 @@
 import styled from "@emotion/styled";
-import { DivisionLine, FlexColumn, FlexRow, MainContainer, ProfilePic, VerticalLine } from "../utils";
-import { CgProfile } from "react-icons/cg";
-import { BiEdit } from "react-icons/bi";
-import { GoLaw } from "react-icons/go";
+import { DivisionLine, FlexColumn, FlexRow, MainContainer } from "../utils";
 import { useAuth } from "../context/auth-context";
 import { Button } from "../components/button/button";
 import { useEffect, useState } from "react";
-import { Subtitle, Content } from "./lawyer-detail/styles";
-import { getUsersLawyer } from "../services/user-services";
+import { editUser, getUser, getUsersLawyer } from "../services/user-services";
 import { useNavigate } from "react-router-dom";
-// import { getLawyerPhoto } from "../services/photo-services";
-
-
-const Label = styled.label`
-font-weight: 500;
-font-size: 18px;
-`
+import { colors } from "../styles/colors";
+import { printRatingStars } from "./lawyers";
+import { Input } from "../components/input/input";
 
 export const SingleSectionContainer = styled.div`
   display: flex;
@@ -25,116 +17,223 @@ export const SingleSectionContainer = styled.div`
   margin-top: 1rem;
 `
 
+const SectionContainer = styled.div`
+  max-height: 300px;
+  min-width: 400px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0px 5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+`
+
+const P = styled.p`
+  color: ${colors.blue.regular};
+  font-weight: 600
+`
+
+const EditModal = styled.div`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000bf;
+  z-index: 9999;
+`
+
+const EditProfileBox = styled.div`
+min-width: 500px;
+min-height: 600px;
+background: #F6F6F9;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+text-align: center;
+gap: 2rem;
+padding: 3rem
+`
+
 function ShowProfile() {
-  
+
   const navigate = useNavigate();
 
-  const { user } = useAuth();
-  const [ show, setShow ] = useState("basic-profile");
-  const [ lawyer, setLawyer ] = useState("");
+  const { user, logout } = useAuth();
+  const [lawyer, setLawyer] = useState("");
+  const [ showModal, setShowModal ] = useState(false);
+  const [ currentUser, setCurrentUser ] = useState({
+    username: "",
+    email: "",
+    // password: "",
+  });
 
-  const [ photo, setPhoto ] = useState();
+  const { username, email } = currentUser;
 
   useEffect(() => {
-    getUsersLawyer().then(setLawyer).catch(console.log)
-    // getLawyerPhoto(1).then(setPhoto).catch(console.log)
-    // async function fetch() {
-    //   try {
-    //     const response = await getUsersLawyer();
-    //     setLawyer(response);
-    //     const lawyerPhoto = await getLawyerPhoto(response.id);
-    //     setPhoto(lawyerPhoto[0].image ? lawyerPhoto[0].image : null);
-    //   } catch(e) {
-    //     console.error(e.message)
-    //   }
-    // }
-    // fetch();
-  }, [])
+    getUsersLawyer().then(setLawyer).catch(console.log);
+    getUser(user.id).then(setCurrentUser).catch(console.log);
+  }, []);
 
+  function handleClick() {
+    setShowModal(!showModal);
+  };
 
-  return(
-  <MainContainer>
-    <h2 style={{textAlign: "center", marginBottom: "1rem"}}>My Profile</h2>
-    <DivisionLine />
-    <FlexRow style={{marginTop: "1rem"}}>
-      <FlexColumn style={{gap: "2rem", marginTop: "1rem"}}>
-        <div 
-          style={{cursor: "pointer", border: "1px solid black"}}
-          onClick={() => {setShow("basic-profile")}}
-        >
-          <CgProfile size="45px"/>
-        </div>
-        <div 
-          style={{cursor: "pointer", border: "1px solid black"}}
-          onClick={() => {setShow("lawyer-profile")}}
-        >
-          <GoLaw size="45px"/>
-        </div>
-      </FlexColumn>
-      <VerticalLine style={{marginLeft: "1rem"}}/>
-      {show === "basic-profile" ? 
-        <FlexColumn style={{width: "100%", gap: "2rem"}}>
-          <ProfilePic 
-            style={{margin: "0 auto"}}
-            src={require('../assets/anonymous.png')}/>
-          <FlexColumn style={{
-            gap: "2rem",
-            marginLeft: "2rem"
-          }}>
-            <FlexRow style={{gap: "1rem", alignItems: "center"}}>
-              <Label>Username:</Label>
-              <p>{user?.username}</p>
-            </FlexRow>
-            <FlexRow style={{gap: "1rem", alignItems: "center"}}>
-              <Label>Email:</Label>
-              <p>{user?.email}</p>
-            </FlexRow>
-            <Button type="primary" size="wide">Edit Profile<BiEdit size="20px" style={{marginLeft: "10px"}}/></Button>
-          </FlexColumn>
-        </FlexColumn> 
-        
-        : 
+  function handleChange(e){
+    e.preventDefault();
+    const { name, value } = e.target;
+    setCurrentUser({...currentUser, [name]: value});
+  };
 
-        <FlexColumn style={{width: "100%", gap: "0.8rem"}}>
-          <ProfilePic style={{margin: "0 auto"}} src={ photo ? photo : require('../assets/anonymous.png')}  />
-          <SingleSectionContainer>
-            <Subtitle>About {lawyer.lawyer_name}</Subtitle>
-            <Content >{lawyer.bio}</Content>
-          </SingleSectionContainer>
-          <SingleSectionContainer>
-            <Subtitle>Areas of Law</Subtitle>
-            <Content>Civil, Penal, Criminal, Judicial</Content>
-          </SingleSectionContainer>
-          <SingleSectionContainer>
-            <Subtitle>Credentials</Subtitle>
-            <Content >{lawyer.credentials}</Content>
-          </SingleSectionContainer>
-          <SingleSectionContainer>
-            <Subtitle>Payement information</Subtitle>
-            <Content >{lawyer.payment_method}.</Content>
-          </SingleSectionContainer>
-          <SingleSectionContainer>
-            <Subtitle>Social Media</Subtitle>
-            <Content >{lawyer.social_media}.</Content>
-          </SingleSectionContainer>
-          <Button 
-          onClick={() => navigate('/lawyer-profile/edit')}
-            style={{
-              margin: "0 auto", 
-              marginTop: "2rem"}} 
-            type="primary" 
-            size="wide"
-          >Edit Profile
-          <BiEdit 
-            size="20px" 
-            style={{
-              marginLeft: "10px"
-            }}/></Button>
-        </FlexColumn>
+  function handleEditProfilSubmit(e) {
+    e.preventDefault();
+
+    editUser(currentUser)
+    setShowModal(!showModal);
+    window.location.reload(false);
+  };
+
+  return (
+    <MainContainer>
+      {
+        showModal ? (
+        <EditModal>
+          <EditProfileBox>
+            <h2>Edit Profile</h2>
+            <form onSubmit={handleEditProfilSubmit}>
+            <FlexColumn style={{gap: "2rem"}}>
+                <Input
+                    id="username"
+                    name="username"
+                    label="Username"
+                    value={username}
+                    onChange={handleChange}
+                />
+                <Input 
+                  id="email"
+                  name="email"
+                  label="Email"
+                  type="email"
+                  value={email}
+                  onChange={handleChange}
+                />
+                {/* <Input 
+                  id="password"
+                  name="password"
+                  label="Password"
+                  type="password"
+                  value={password}
+                  onChange={handleChange}
+                /> */}
+                <Button 
+                  style={{margin: "0 auto"}} 
+                  type="primary" 
+                  size="medium"
+                >Submit edit</Button>
+                <a 
+                href="###"
+                style={{cursor: "pointer", textDecoration: "underline"}}
+                onClick={() => {
+                  navigate('/show-profile');
+                  setShowModal(!showModal);
+                }}>Back</a>
+            </FlexColumn>
+            </form>
+          </EditProfileBox>
+        </EditModal>
+        )
+        :
+        null
       }
-    </FlexRow>
-  </MainContainer>
-)
+      <h2 style={{ textAlign: "center", marginBottom: "1rem" }}>My Account</h2>
+      <DivisionLine style={{marginBottom: "2rem"}}/>
+      <FlexColumn style={{gap: "4rem", alignItems:"center"}}>
+        <SectionContainer>
+          <FlexColumn
+            style={{ gap: "1.5rem" }}>
+            <h3
+              style={{ textAlign: "center" }}
+            >Account Detail</h3>
+            <FlexRow
+              style={{ justifyContent: "space-between" }}
+            >
+              <P>Username:</P>
+              <p>{user.username}</p>
+            </FlexRow>
+            <FlexRow
+              style={{ justifyContent: "space-between" }}
+            >
+              <P>Email:</P>
+              <p>{user.email}</p>
+            </FlexRow>
+            <Button style={{margin: "0 auto"}}size="medium" type="secondary" onClick={handleClick}>Edit</Button>
+          </FlexColumn>
+        </SectionContainer>
+        <SectionContainer>
+        <FlexColumn
+            style={{ gap: "1.5rem" }}>
+            <h3
+              style={{ textAlign: "center" }}
+            >Legalapp Plan</h3>
+            <FlexRow
+              style={{ justifyContent: "space-between" }}
+            >
+              <P>Package:</P>
+              <p>Free</p>
+            </FlexRow>
+            <Button style={{margin: "0 auto"}}type="secondary" size="medium">Upgrade plan</Button>
+          </FlexColumn>
+        </SectionContainer>
+        <SectionContainer>
+        <FlexColumn
+          style={{ gap: "1.5rem" }}>
+          <h3 style={{ textAlign: "center" }}>Lawyer Profile</h3>
+          <FlexRow style={{ justifyContent: "space-between" }}>
+            <P>Lawyer:</P>
+            <p>{lawyer.lawyer_name}</p>
+          </FlexRow>
+          <FlexRow style={{ justifyContent: "space-between" }}>
+            <P>Email:</P>
+            <p>{lawyer.email}</p>
+          </FlexRow>
+          <FlexRow style={{ justifyContent: "space-between" }}>
+            <P>Rating:</P>
+            <FlexRow style={{gap: "6px"}}>
+              <FlexRow style={{gap: "2px", alignItems: "center"}}>
+                {printRatingStars(lawyer.average_rating)}
+              </FlexRow>
+              <p>({lawyer.reviews_count})</p>
+            </FlexRow>
+          </FlexRow>
+            <FlexRow style={{justifyContent: "space-between"}}>
+              <Button 
+                type="primary" 
+                size="medium"
+                onClick={() => navigate(`/lawyers/${lawyer.id}`)}
+              >View Profile</Button>
+              <Button 
+                type="primary" 
+                size="medium"
+                onClick={() => navigate(`/lawyer-profile/edit`)}
+              >Edit Profile</Button>
+            </FlexRow>
+          </FlexColumn>
+        </SectionContainer>
+        <FlexColumn style={{ gap: "2rem" }}>
+          <Button 
+            type="ghost" 
+            size="wide"
+          >Sample Premium Profile now</Button>
+          <Button 
+            type="secondary" 
+            size="wide"
+            onClick={() => logout()}
+          >Sign out</Button>
+        </FlexColumn>
+      </FlexColumn>
+    </MainContainer>
+  )
 
 
 }
