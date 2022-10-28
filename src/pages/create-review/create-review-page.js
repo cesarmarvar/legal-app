@@ -32,13 +32,13 @@ export function CreateReview() {
     title: "",
     content: "",
     context: "",
-    name: "",
+    reviewer_name: "",
     email: "",
     lawyer_id: params.id
   });
   
   // eslint-disable-next-line
-  const { rating, title, content, context, name, email } = formData;
+  const { rating, title, content, context, reviewer_name, email } = formData;
 
   function handleChange(e){
     e.preventDefault();
@@ -141,10 +141,10 @@ export function CreateReview() {
             </InputContainer>
             <InputContainer>
               <Input 
-                id="name" 
-                name="name"
+                id="reviewer_name" 
+                name="reviewer_name"
                 label="Your name"
-                value={name}
+                value={reviewer_name}
                 onChange={handleChange}
               />
             </InputContainer>
