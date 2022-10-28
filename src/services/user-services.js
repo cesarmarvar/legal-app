@@ -14,3 +14,7 @@ export function getUser() {
 export function getUsersLawyer() {
   return apiFetch("my-lawyer-profile");
 }
+
+export function editUser(formData) {
+  return apiFetch("profile/edit", { body: formData, method: "PATCH" })
+}
