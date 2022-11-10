@@ -6,13 +6,13 @@ import { getUsersLawyer } from "../services/user-services";
 import { MainContainer, DivisionLine, FlexColumn, ProfilePic } from "../utils";
 import { Button } from "../components/button/button";
 import { useNavigate } from "react-router-dom";
-import { getLawyerPhoto, uploadPhoto } from "../services/photo-services";
+import { uploadPhoto } from "../services/photo-services";
 import { uploadImage } from "../services/cloudinary";
 
 function EditProfilePage() {
 
   const navigate = useNavigate();
-  // const [image, setImage] = useState("");
+  // eslint-disable-next-line
   const [photo, setPhoto] = useState(null);
 
   const [ formData, setFormData ] = useState({
@@ -60,8 +60,8 @@ function EditProfilePage() {
       try {
         const response = await getUsersLawyer();
         setFormData(response);
-        const lawyerPhoto = await getLawyerPhoto(response.id);
-        setPhoto(lawyerPhoto[0].image ? lawyerPhoto[0].image : null);
+        // const lawyerPhoto = await getLawyerPhoto(response.id);
+        // setPhoto(lawyerPhoto[0].image ? lawyerPhoto[0].image : null);
       }catch(e) {
         console.error(e.message);
       }
