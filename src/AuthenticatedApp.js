@@ -13,6 +13,8 @@ import ShowProfile from "./pages/show-profile";
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import CreateLawyerPage from "./pages/create-lawyer";
+import CreateContact from "./pages/create-contact";
+import IndexContacts from "./pages/index-contacts";
 
 function AuthenticatedApp() {
 
@@ -32,6 +34,8 @@ function AuthenticatedApp() {
       <Route path="show-profile" element={<ShowProfile />} />
       <Route path="lawyer-profile/create" element={<CreateLawyerPage />} />
       <Route path="lawyer-profile/edit" element={<EditProfilePage />} />
+      <Route path="contact/new" element={<CreateContact />} />
+      <Route path="contacts" element={<IndexContacts />} />
     </Routes>
     <Footer />
   </>

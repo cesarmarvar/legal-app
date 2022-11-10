@@ -41,7 +41,7 @@ function Header() {
         updateMenu();
         break;
       case 3:
-        navigate('/lawyers')
+        navigate('/contact/new')
         setOpen(false);
         setIsMenuClicked(false);
         updateMenu();
