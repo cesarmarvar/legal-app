@@ -15,6 +15,7 @@ import Footer from "./components/footer/footer";
 import CreateLawyerPage from "./pages/create-lawyer";
 import CreateContact from "./pages/create-contact";
 import IndexContacts from "./pages/index-contacts";
+import ShowContact from "./pages/show-contact";
 
 function AuthenticatedApp() {
 
@@ -36,6 +37,7 @@ function AuthenticatedApp() {
       <Route path="lawyer-profile/edit" element={<EditProfilePage />} />
       <Route path="contact/new" element={<CreateContact />} />
       <Route path="contacts" element={<IndexContacts />} />
+      <Route path="contacts/:id" element={<ShowContact />} />
     </Routes>
     <Footer />
   </>
