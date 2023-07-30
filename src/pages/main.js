@@ -48,7 +48,7 @@ function MainPage() {
       if (!lawyerQuery) {
         return;
       }
-      const response = await fetch(`https://legalapp-0822.herokuapp.com/lawyers-searchquery?query=${lawyerQuery}`);
+      const response = await fetch(`https://legalapp-0822.onrender.com/lawyers-searchquery?query=${lawyerQuery}`);
       const data = await response.json();
       setQueryResults(data)
     }
