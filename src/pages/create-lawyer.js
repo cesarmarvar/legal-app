@@ -8,13 +8,20 @@ import { uploadImage } from "../services/cloudinary";
 import { useAuth } from "../context/auth-context";
 import { useNavigate } from "react-router-dom";
 
+
+// function initMapScript() {
+//   if(window.google) return Promise.resolve();
+
+//   const src = `https://maps.googleapis.com/maps/api/js?key=${process.env.LEGALAPP_GOOGLE_MAP_API}&libraries=places&v=weekly`;
+//   return LoadAsyncScript(src);
+// };
+
 function CreateLawyerPage(){
 
   const { user } = useAuth();
   const navigate = useNavigate();
 
   const [ photo, setPhoto ] = useState();
-  // const [ createdLawyer, setCreatedLawyer ] = useState();
   const [ formData, setFormData ] = useState({
     lawyer_name: "",
     years_licensed: "",
@@ -46,7 +53,24 @@ function CreateLawyerPage(){
     cellphone,
     email, 
     image,
+    lat,
+    long,
    } = formData
+
+
+  //  function initAutocomplete() {
+  //   if(!addressInput.current) return;
+  //   const autocomplete = new window.google.maps.places.Autocomplete(addressInput.current);
+  //   autocomplete.setFields(["address_component", "geometry"]);
+  //   autocomplete.addListener("place_changed", () => {
+  //     const place = autocomplete.getPlace();
+  //     setFormData(data => ({
+  //       ...data,
+  //       lat: place.geometry.location.lat(),
+  //       long: place.geometry.location.lng(),
+  //     }));
+  //   });
+  // };
 
   const handlePhotoSubmit = async (e) => {
     e.preventDefault();
@@ -65,9 +89,10 @@ function CreateLawyerPage(){
 
   function handleSubmit(e){
     e.preventDefault();
-    console.log(formData)
+    // console.log(formData);
+    console.log(user);
+    console.log(user.id);
     createLawyer(formData).then(console.log).catch(console.log)
-    // console.log(createdLawyer)
     navigate(`/`)
   };
 

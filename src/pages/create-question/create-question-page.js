@@ -40,6 +40,9 @@ function CreateQuestionPage() {
     .catch(console.log)
     navigate('/questions')
   }
+
+  console.log(user);
+
   return (
   <MainContainer>
     <h2>Ask a Lawyer</h2>
