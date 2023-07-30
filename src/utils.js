@@ -57,3 +57,88 @@ export const ThinDivisionLine = styled.div`
   width: 100%;
   height: 0px;
 `
+
+// Functions 
+
+export function parseSpeciality(id){
+  switch (id) {
+    case 1:
+      return "Civil";
+    case 2:
+      return "Penal";
+    case 3:
+      return "Familia";
+    case 4:
+      return "Laboral";
+    case 5:
+      return "Ambiental";
+    case 6:
+      return "Comercial";
+    case 7:
+      return "Propiedad Intelectual";
+    case 8:
+      return "Marcas";
+    case 9:
+      return "Registral";
+    case 10:
+      return "Notarial";
+    case 11:
+      return "Inmobiliario";
+    case 12:
+      return "Contratos";
+    case 13:
+      return "Tributario";
+    case 14:
+      return "Energía";
+    case 15:
+      return "Constitucional";
+    case 16:
+      return "Internacional";
+    case 17:
+      return "Administrativo";
+    case 18:
+      return "Migratorio";
+    case 19:
+      return "Marítimo";
+    case 20:
+      return "Aduanero";
+    case 21:
+      return "Arbitraje";
+    case 22:
+      return "Procesal Civil";
+    case 23:
+      return "Procesal Penal";
+    case 24:
+      return "Procesal Constitucional";
+    case 25:
+      return "Accidentes";
+    case 26:
+      return "Medicina";
+    case 27:
+      return "Aeronáutico";
+    case 28:
+      return "Bancario";
+    case 29:
+      return "Agro";
+    case 30:
+      return "Minero";
+    case 31:
+      return "Salud y Seguridad";
+    case 32:
+      return "Seguros";
+    case 33:
+      return "Política";
+    case 34:
+      return "Contratación Pública";
+    case 35:
+      return "Tutela del Consumidor";
+    case 36:
+      return "Fusiones y Adquisiciones";
+    case 37:
+      return "Compliance";
+    case 38:
+      return "Startups";
+    default:
+      return;
+  }
+}
