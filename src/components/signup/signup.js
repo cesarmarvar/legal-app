@@ -27,6 +27,7 @@ function Signup() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(formData);
     signup(formData);
     navigate('/')
   }

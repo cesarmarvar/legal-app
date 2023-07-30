@@ -83,7 +83,7 @@ function Header() {
         <FlexRow style={{justifyContent: "center"}}>
           <Title
           onClick={() => navigate(`/`)}
-          style={{cursor: "pointer"}}>Legal</Title>
+          style={{cursor: "pointer"}}>LegalApp</Title>
         </FlexRow>
       </header>
       <div className={menuClass}>

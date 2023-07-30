@@ -28,7 +28,9 @@ function buttonType(type) {
         background-color: ${colors.white};
         border: 2px solid ${colors.blue.regular};
         &: hover {
-          background-color: #e6e6e6
+          color: white;
+          background-color: ${colors.blue.opaque_1};
+          border: none;      
         }
       `
     default:

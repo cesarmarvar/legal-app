@@ -16,7 +16,7 @@ function Footer() {
         </a>
       </FlexRow>
       <p>
-      © Legal Inc. All Rights Reserved 2022
+      © Legal Inc. All Rights Reserved 2023
       </p>
     </FlexColumn>
   )

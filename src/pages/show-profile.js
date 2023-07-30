@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { DivisionLine, FlexColumn, FlexRow, MainContainer } from "../utils";
 import { useAuth } from "../context/auth-context";
 import { Button } from "../components/button/button";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { editUser, getUser, getUsersLawyer } from "../services/user-services";
 import { useNavigate } from "react-router-dom";
 import { colors } from "../styles/colors";
@@ -18,7 +18,7 @@ export const SingleSectionContainer = styled.div`
 `
 
 const SectionContainer = styled.div`
-  max-height: 300px;
+  max-height: 350px;
   min-width: 400px;
   border-radius: 8px;
   box-shadow: 2px 2px 0px 5px rgba(0, 0, 0, 0.2);
@@ -50,16 +50,30 @@ background: #F6F6F9;
 border-radius: 20px;
 display: flex;
 flex-direction: column;
-justify-content: center;
+justify-content: space-around;
 text-align: center;
 gap: 2rem;
 padding: 3rem
 `
 
+// function LoadAsyncScript(src) {
+//   return new Promise(resolve => {
+//     Object.assign(script, {
+//       type: "text/javascript",
+//       async: true,
+//       src
+//     });
+//     script.addEventListener("load", () => resolve(script));
+//     document.head.appendChild(script);
+//   });
+// };
+
 function ShowProfile() {
 
   const navigate = useNavigate();
 
+  // const addressInput = useRef(null);
+  
   const { user, logout } = useAuth();
   const [lawyer, setLawyer] = useState("");
   const [ showModal, setShowModal ] = useState(false);
@@ -68,13 +82,18 @@ function ShowProfile() {
     email: "",
     // password: "",
   });
+  
 
+console.log(user)
   const { username, email } = currentUser;
 
   useEffect(() => {
     getUsersLawyer().then(setLawyer).catch(console.log);
     getUser(user.id).then(setCurrentUser).catch(console.log);
+    // eslint-disable-next-line
   }, []);
+
+  // console.log(user);
 
   function handleClick() {
     setShowModal(!showModal);
@@ -100,9 +119,9 @@ function ShowProfile() {
         showModal ? (
         <EditModal>
           <EditProfileBox>
-            <h2>Edit Profile</h2>
+            <h2>Edit Acount Detail</h2>
             <form onSubmit={handleEditProfilSubmit}>
-            <FlexColumn style={{gap: "2rem"}}>
+            <FlexColumn style={{gap: "3rem"}}>
                 <Input
                     id="username"
                     name="username"
@@ -206,7 +225,7 @@ function ShowProfile() {
               <p>({lawyer.reviews_count})</p>
             </FlexRow>
           </FlexRow>
-            <FlexRow style={{justifyContent: "space-between"}}>
+            <FlexRow style={{justifyContent: "space-between", marginBottom: "0.5rem"}}>
               <Button 
                 type="primary" 
                 size="medium"
@@ -219,19 +238,19 @@ function ShowProfile() {
               >Edit Profile</Button>
             </FlexRow>
           </FlexColumn>
-        </SectionContainer>
-        <FlexColumn style={{ gap: "2rem" }}>
           <Button 
+            style={{margin: "5px auto"}}
             type="ghost" 
             size="wide"
           >Sample Premium Profile now</Button>
-          <Button 
-            type="secondary" 
-            size="wide"
-            onClick={() => logout()}
-          >Sign out</Button>
-        </FlexColumn>
+        </SectionContainer>
       </FlexColumn>
+      <Button 
+        style={{ margin: "2rem auto" }}
+        type="secondary" 
+        size="wide"
+        onClick={() => logout()}
+      >Sign out</Button>
     </MainContainer>
   )
 
